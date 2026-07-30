@@ -1,0 +1,9 @@
+{
+  "name": "manish-gaud-portfolio-motion",
+  "private": true,
+  "type": "module",
+  "description": "Motion experiments and portfolio site assets.",
+  "dependencies": {
+    "gsap": "^3.15.0"
+  }
+}
