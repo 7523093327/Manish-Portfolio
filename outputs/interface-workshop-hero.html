@@ -46,8 +46,54 @@
     .outline-illustration{position:absolute;inset:0;z-index:9;width:100%;height:100%;border:0;pointer-events:none;opacity:0}
     #control_pillars_group .control-pillar{position:relative;width:16.667%;height:100%;overflow:visible}#control_pillars_group .control-pillar img{position:absolute;left:0;width:100%;height:100%;display:block}#control_pillars_group .control-pillar .control-on{top:-10.36%;height:110.88%;clip-path:inset(0 0 60% 0);transform:none;transform-origin:top center;will-change:opacity}
   </style>
+  <style>
+    .brands-strip{position:relative;z-index:1;background:var(--paper);padding:clamp(58px,7vw,96px) 0 clamp(32px,4vw,56px);text-align:center;overflow:hidden}.brands-strip__label{margin:0 0 clamp(34px,4vw,54px);color:#4e4a43;font:400 clamp(15px,1.45vw,18px)/1.65 "Manrope",sans-serif}.brands-marquee{width:100%;overflow:hidden}.brands-strip__logos{display:flex;width:max-content;align-items:center;gap:clamp(52px,8vw,130px);padding-right:clamp(52px,8vw,130px);animation:brands-ticker 28s cubic-bezier(.4,0,.2,1) infinite}.brand-logo{flex:0 0 clamp(150px,17vw,230px);display:flex;align-items:center;justify-content:center;min-height:48px}.brand-logo img{display:block;width:100%;height:40px;max-width:220px;object-fit:contain}.brand-logo--zenskar img{width:75%;height:30px}@keyframes brands-ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}@media(max-width:700px){.brands-strip{padding-block:58px 44px}.brands-strip__logos{gap:48px;padding-right:48px;animation-duration:22s}.brand-logo{flex-basis:145px}.brand-logo img{height:30px;max-width:155px}.brand-logo--zenskar img{height:23px}}@media(prefers-reduced-motion:reduce){.brands-strip__logos{animation:none;transform:none}}
+  </style>
+  <style>
+    @media(min-width:701px){.page{height:100svh;min-height:720px;padding-bottom:22px}.hero{padding-top:clamp(26px,3.4vh,50px)}.process-wrap{width:min(92%,1180px);margin-bottom:clamp(20px,2.6vh,32px)}.headline{font-size:clamp(42px,4.65vw,70px);line-height:.98}.subcopy{margin-top:clamp(14px,1.8vh,20px);font-size:clamp(14px,1.15vw,16px);line-height:1.45}.actions{margin:clamp(18px,2.2vh,25px) auto 0}.nav-cta{gap:8px}.nav-cta__icon{font-size:16px;line-height:1;transform:translateY(-1px)}}
+  </style>
+  <style>
+    .featured-work-section{position:relative;z-index:1;background:var(--paper);padding:clamp(48px,5vw,72px) clamp(22px,5vw,76px) clamp(120px,12vw,190px);overflow:visible}.featured-work-inner{max-width:none;margin:0}.featured-work-header{position:sticky;top:96px;z-index:2;isolation:isolate;width:fit-content;margin-left:clamp(0px,4vw,80px);pointer-events:none}.featured-work-header::before{content:"";position:absolute;z-index:-2;top:-120px;bottom:-36px;left:-160px;width:calc(100vw + 160px);background:var(--paper);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 48px),transparent 100%)}.featured-work-header h2{position:relative;display:inline-block;margin:0;font:600 48px/.95 Fraunces,serif;letter-spacing:-.06em;white-space:nowrap}.featured-work-header h2::after{content:"";position:absolute;z-index:-1;left:-2px;right:-4px;bottom:.04em;height:.18em;background:rgba(40,84,239,.54);transform:rotate(-2.8deg);border-radius:55% 18% 43% 20%}.featured-work-cards{display:flex;flex-direction:column;align-items:center;gap:clamp(74px,8vw,120px);margin-top:46px}.work-card{position:relative;display:block;width:min(74.8vw,1275px);margin-inline:auto;overflow:visible;text-decoration:none;color:inherit}.work-card__artwork{position:relative;display:block;width:100%;aspect-ratio:1920/880;overflow:hidden}.work-card__artwork img{position:absolute;left:0;top:0;display:block;width:100%;height:auto;transform:translateY(-12.96%)}.work-card__cta-overlay{position:absolute;z-index:2;left:20%;top:57%;width:15%;height:5.5%;border-radius:8px;outline:2px solid transparent;outline-offset:4px;transition:background .2s,outline-color .2s}.work-card__cta-overlay:hover,.work-card__cta-overlay:focus-visible{background:rgba(40,84,239,.14);outline-color:var(--blue)}.work-card:focus-visible{outline:3px solid var(--blue);outline-offset:8px}@media(max-width:700px){.featured-work-section{padding:48px 20px 78px}.featured-work-header{position:static;margin:0 0 42px}.featured-work-header::before{display:none}.featured-work-header h2{font-size:48px}.featured-work-cards{gap:42px;margin-top:0}.work-card{width:100%}.work-card__artwork{aspect-ratio:1920/900}.work-card__cta-overlay{left:20%;top:56%;width:23%;height:8%}}
+  </style>
+  <style>
+    .work-card--zacks{transform-origin:50% 50%;will-change:transform,opacity}
+    .work-card__artwork--layered{isolation:isolate}
+    .work-card--zacks .work-card__master{z-index:1}
+    .work-card--zacks .work-card__layer{pointer-events:none;will-change:transform,opacity,clip-path}
+    .work-card--zacks .work-card__layer--decorations{z-index:4;left:0;top:-15.909%;width:100%;height:auto;transform:none}
+    .work-card--zacks .work-card__layer--preview{z-index:5;left:45.988%;top:21.351%;width:46.927%;height:auto;transform:none;transform-origin:50% 100%;--reveal-edge:100%;--reveal-feather:6%;--reveal-feather-half:3%;-webkit-mask-image:linear-gradient(to right,transparent 0,transparent calc(var(--reveal-edge) - var(--reveal-feather)),rgba(0,0,0,.35) calc(var(--reveal-edge) - var(--reveal-feather-half)),#000 var(--reveal-edge),#000 100%);mask-image:linear-gradient(to right,transparent 0,transparent calc(var(--reveal-edge) - var(--reveal-feather)),rgba(0,0,0,.35) calc(var(--reveal-edge) - var(--reveal-feather-half)),#000 var(--reveal-edge),#000 100%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat}
+    .work-card--zacks .work-card__layer--content{z-index:4;left:20.397%;top:23.169%;width:23.438%;height:auto;transform:none}
+    .work-card--zacks .work-card__layer--badge{z-index:0;left:72.505%;top:-.572%;width:20%;height:auto;transform:none;transform-origin:50% 50%}
+    .work-card--zacks .work-card__master{-webkit-mask-image:none!important;mask-image:none!important}
+    .work-card--zacks .work-card__final-master{display:none;z-index:6}
+    @media(max-width:700px){.work-card--zacks{will-change:auto}.work-card--zacks .work-card__layer,.work-card--zacks .work-card__master{display:none}.work-card--zacks .work-card__final-master{display:block}}
+    @media(prefers-reduced-motion:reduce){.work-card--zacks .work-card__layer,.work-card--zacks .work-card__master{display:none}.work-card--zacks .work-card__final-master{display:block}}
+  </style>
+  <style>
+    .work-card__artwork--thumbnail-reveal{isolation:isolate}
+    .work-card__thumbnail-base{z-index:1}
+    .work-card__thumbnail-layer{z-index:2;pointer-events:none;--reveal-feather:2.4%;--reveal-feather-half:1.2%;-webkit-mask-image:linear-gradient(to right,transparent 0,transparent calc(var(--reveal-edge) - var(--reveal-feather)),rgba(0,0,0,.35) calc(var(--reveal-edge) - var(--reveal-feather-half)),#000 var(--reveal-edge),#000 100%);mask-image:linear-gradient(to right,transparent 0,transparent calc(var(--reveal-edge) - var(--reveal-feather)),rgba(0,0,0,.35) calc(var(--reveal-edge) - var(--reveal-feather-half)),#000 var(--reveal-edge),#000 100%);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;will-change:clip-path,-webkit-mask-image,mask-image}
+    .work-card__content-motion,.work-card__decoration-motion{position:absolute;inset:0;pointer-events:none}
+    .work-card__content-motion{z-index:3;opacity:0;will-change:transform,opacity}
+    .work-card__decoration-motion{z-index:4;opacity:0;will-change:transform,opacity}
+    .work-card__content-layer,.work-card__decoration-layer{pointer-events:none}
+    .work-card--peoplehum .work-card__thumbnail-layer{--reveal-edge:93.544%;clip-path:inset(29.21% 6.456% 15.166% 47.598%);-webkit-clip-path:inset(29.21% 6.456% 15.166% 47.598%)}
+    .work-card--cosoot .work-card__thumbnail-layer{--reveal-edge:96.298%;clip-path:inset(30.555% 3.702% 14.469% 50.583%);-webkit-clip-path:inset(30.555% 3.702% 14.469% 50.583%)}
+    .work-card--zenskar .work-card__thumbnail-layer{--reveal-edge:100%;clip-path:inset(28.221% 0 16.711% 49.243%);-webkit-clip-path:inset(28.221% 0 16.711% 49.243%)}
+    @media(max-width:700px){.work-card__artwork--thumbnail-reveal .work-card__thumbnail-base,.work-card__artwork--thumbnail-reveal .work-card__content-motion,.work-card__artwork--thumbnail-reveal .work-card__decoration-motion{display:none}.work-card__artwork--thumbnail-reveal .work-card__thumbnail-layer{clip-path:none!important;-webkit-clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;will-change:auto}}
+    @media(prefers-reduced-motion:reduce){.work-card__artwork--thumbnail-reveal .work-card__thumbnail-base,.work-card__artwork--thumbnail-reveal .work-card__content-motion,.work-card__artwork--thumbnail-reveal .work-card__decoration-motion{display:none}.work-card__artwork--thumbnail-reveal .work-card__thumbnail-layer{clip-path:none!important;-webkit-clip-path:none!important;-webkit-mask-image:none!important;mask-image:none!important;will-change:auto}}
+  </style>
+  <style>
+    .page-scroll-progress{position:fixed;top:0;left:0;z-index:50;width:100%;height:4px;overflow:hidden;background:rgba(40,84,239,.13);pointer-events:none}
+    .page-scroll-progress__bar{width:100%;height:100%;background:var(--blue);box-shadow:0 0 12px rgba(40,84,239,.3);transform:scaleX(0);transform-origin:left center;will-change:transform}
+    @media(max-width:700px){.page-scroll-progress{height:3px}}
+    @media(prefers-reduced-motion:reduce){.page-scroll-progress__bar{will-change:auto}}
+  </style>
 </head>
 <body>
+  <div class="page-scroll-progress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div class="page-scroll-progress__bar"></div>
+  </div>
   <div class="grain" aria-hidden="true"></div>
   <div class="page">
     <header class="site-header">
@@ -55,7 +101,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <svg class="nav-spark" width="42" height="22" viewBox="0 0 42 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M33.2801 0H7.83061C3.50588 0 0 3.50588 0 7.83061V13.7036C0 18.0283 3.50588 21.5342 7.83061 21.5342H33.2801C37.6048 21.5342 41.1107 18.0283 41.1107 13.7036V7.83061C41.1107 3.50588 37.6048 0 33.2801 0Z" fill="#5666FF"/><path d="M13.0272 2.56122C13.3019 1.77149 14.4188 1.77149 14.6935 2.56122L16.3427 7.30274C16.4272 7.54562 16.6135 7.73954 16.8528 7.83373L21.459 9.64697C22.2043 9.94036 22.2043 10.9951 21.459 11.2885L16.8528 13.1018C16.6135 13.196 16.4272 13.3899 16.3427 13.6328L14.6935 18.3743C14.4188 19.164 13.3019 19.164 13.0272 18.3743L11.378 13.6328C11.2935 13.3899 11.1073 13.196 10.868 13.1018L6.2618 11.2885C5.51648 10.9951 5.51648 9.94036 6.2618 9.64697L10.868 7.83373C11.1073 7.73954 11.2935 7.54562 11.378 7.30274L13.0272 2.56122Z" fill="#F4D36B"/><path d="M28.6693 8.88984C28.944 8.1001 30.0608 8.1001 30.3355 8.88984L31.1814 11.3217C31.2659 11.5646 31.4521 11.7585 31.6914 11.8527L34.1265 12.8113C34.8718 13.1047 34.8718 14.1595 34.1265 14.4528L31.6914 15.4114C31.4521 15.5056 31.2659 15.6996 31.1814 15.9424L30.3355 18.3743C30.0608 19.164 28.944 19.164 28.6693 18.3743L27.8234 15.9424C27.7389 15.6996 27.5526 15.5056 27.3134 15.4114L24.8783 14.4528C24.1329 14.1595 24.1329 13.1047 24.8783 12.8113L27.3134 11.8527C27.5526 11.7585 27.7389 11.5646 27.8234 11.3217L28.6693 8.88984Z" fill="#D9D9D9"/></svg><a href="#work">Work</a><a href="#services">Services</a><a href="#tools">Skills</a><a href="#about">About</a><a href="#testimonials">Testimonials</a><a href="#contact">Contact</a>
       </nav>
-      <a class="nav-cta" href="#contact">Start a Project <span aria-hidden="true">↗</span></a>
+      <a class="nav-cta" href="../MANISH_CV.pdf" download="Manish-Gaud-Resume.pdf">Resume <span class="nav-cta__icon" aria-hidden="true">↓</span></a>
       <button class="mobile-menu" type="button" aria-label="Open navigation">Menu</button>
     </header>
     <main id="top">
@@ -284,15 +330,51 @@
           <i class="belt-puck" aria-hidden="true"></i><i class="belt-puck orange" aria-hidden="true"></i><i class="belt-puck lime" aria-hidden="true"></i>
           <button class="replay-motion" id="replay-motion" type="button">Replay motion ↻</button>
         </div>
-        <p class="eyebrow">Product Designer · SaaS · Fintech · AI Workflow</p>
+        <p class="eyebrow">PRODUCT DESIGNER · UI/UX · VISUAL DESIGN · AI WORKFLOWS</p>
         <h1 class="headline" id="hero-title">I shape messy product ideas into <span class="underlined">interfaces</span> people understand.</h1>
-        <p class="subcopy">I help SaaS, fintech, and growing teams simplify workflows, redesign dashboards, and build polished digital experiences.</p>
+        <p class="subcopy">I work with teams to simplify complex workflows, design scalable interfaces, and ship polished product experiences.</p>
         <div class="actions"><a class="button primary" href="#work">View Selected Work <span aria-hidden="true">↗</span></a><a class="button secondary" href="#contact">Start a Project <span aria-hidden="true">↗</span></a></div>
-        <p class="trust">Worked across <span>Zacks Investment Research, PeopleHum, Cosoot, and Zenskar.</span></p>
       </section>
     </main>
   </div>
+  <section class="brands-strip" aria-labelledby="brands-title">
+    <p class="brands-strip__label" id="brands-title">Worked with teams across</p>
+    <div class="brands-marquee">
+      <div class="brands-strip__logos">
+        <div class="brand-logo brand-logo--zenskar"><img src="../Brands SVG/Zenskar.svg" alt="Zenskar"></div>
+        <div class="brand-logo"><img src="../Brands SVG/Cosoot.svg" alt="Cosoot Sustainability"></div>
+        <div class="brand-logo"><img src="../Brands SVG/peopleHum Logo.svg" alt="peopleHum"></div>
+        <div class="brand-logo"><img src="../Brands SVG/Zacks.svg" alt="Zacks Insight"></div>
+        <div class="brand-logo brand-logo--zenskar" aria-hidden="true"><img src="../Brands SVG/Zenskar.svg" alt=""></div>
+        <div class="brand-logo" aria-hidden="true"><img src="../Brands SVG/Cosoot.svg" alt=""></div>
+        <div class="brand-logo" aria-hidden="true"><img src="../Brands SVG/peopleHum Logo.svg" alt=""></div>
+        <div class="brand-logo" aria-hidden="true"><img src="../Brands SVG/Zacks.svg" alt=""></div>
+      </div>
+    </div>
+  </section>
+  <section class="featured-work-section" id="work" aria-labelledby="featured-work-title">
+    <div class="featured-work-inner">
+      <header class="featured-work-header"><h2 id="featured-work-title">Featured work</h2></header>
+      <div class="featured-work-cards">
+        <a class="work-card work-card--zacks" href="/work/zacks-insights" aria-label="View Zacks Insights case study">
+          <span class="work-card__artwork work-card__artwork--layered" data-work-motion>
+            <img class="work-card__master" src="../Scroll animation/card_base.svg" alt="Zacks Insights case study card">
+            <img class="work-card__final-master" src="../Featured work sections/work-card-01-zacks.svg" alt="" aria-hidden="true">
+            <img class="work-card__layer work-card__layer--decorations" src="../Scroll animation/card_decorations.svg" alt="" aria-hidden="true">
+            <img class="work-card__layer work-card__layer--preview" src="../Scroll animation/card_preview.svg" alt="" aria-hidden="true">
+            <img class="work-card__layer work-card__layer--content" src="../Scroll animation/card_content.svg" alt="" aria-hidden="true">
+            <img class="work-card__layer work-card__layer--badge" src="../Scroll animation/card_number_badge.svg" alt="" aria-hidden="true">
+          </span>
+          <span class="work-card__cta-overlay" aria-hidden="true"></span>
+        </a>
+        <a class="work-card work-card--peoplehum" href="/work/peoplehum" aria-label="View peopleHum case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_peoplehum.svg" alt="peopleHum case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-02-peoplehum.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_peoplehum.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_peoplehum.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
+        <a class="work-card work-card--cosoot" href="/work/cosoot-sustainability" aria-label="View Cosoot Sustainability case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_cosoot.svg" alt="Cosoot Sustainability case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-03-cosoot.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_cosoot.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_cosoot.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
+        <a class="work-card work-card--zenskar" href="/work/zenskar" aria-label="View Zenskar case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_zenskar.svg" alt="Zenskar case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-04-zenskar.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_zenskar.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_zenskar.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/ScrollTrigger.min.js"></script>
   <script>
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const outline = document.querySelector('#outline-illustration');
@@ -544,6 +626,202 @@
         document.body.classList.add('hero-cursor-active');
       });
     }
+
+    function initWorkCardScaleMotion() {
+      const cards = [...document.querySelectorAll('.featured-work-cards .work-card')];
+      const compactViewport = window.matchMedia('(max-width: 700px)');
+
+      if (!cards.length || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (reducedMotion.matches || compactViewport.matches) {
+        gsap.set(cards, { clearProps: 'transform' });
+        return;
+      }
+
+      cards.forEach((card) => {
+        gsap.set(card, { scale: .8, transformOrigin: '50% 50%' });
+
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 92%',
+            end: 'bottom 8%',
+            scrub: .8,
+            invalidateOnRefresh: true
+          }
+        })
+          .to(card, { scale: 1, duration: .42, ease: 'power2.out' })
+          .to(card, { scale: 1, duration: .18, ease: 'none' })
+          .to(card, { scale: .8, duration: .4, ease: 'power2.in' });
+      });
+    }
+
+    function initZacksWorkCardMotion() {
+      const card = document.querySelector('.work-card--zacks');
+      const master = card?.querySelector('.work-card__master');
+      const decorations = card?.querySelector('.work-card__layer--decorations');
+      const preview = card?.querySelector('.work-card__layer--preview');
+      const content = card?.querySelector('.work-card__layer--content');
+      const badge = card?.querySelector('.work-card__layer--badge');
+      const layers = [decorations, preview, content, badge].filter(Boolean);
+      const compactViewport = window.matchMedia('(max-width: 700px)');
+
+      if (!card || !master || !window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      if (reducedMotion.matches || compactViewport.matches) {
+        gsap.set(card, { clearProps: 'transform,opacity' });
+        gsap.set(master, { autoAlpha: 1, filter: 'none' });
+        gsap.set(layers, { autoAlpha: 0 });
+        return;
+      }
+
+      gsap.set(master, { opacity: 1, filter: 'none' });
+      gsap.set(decorations, { autoAlpha: 1, y: 0, rotation: 0, clipPath: 'inset(0 62.6% 0 37.3%)', webkitClipPath: 'inset(0 62.6% 0 37.3%)' });
+      gsap.set(preview, { autoAlpha: 1, scale: 1, clipPath: 'none', webkitClipPath: 'none', '--reveal-edge': '100%', transformOrigin: '100% 50%' });
+      gsap.set(content, { autoAlpha: 0, y: 32 });
+      gsap.set(badge, { autoAlpha: 1, scale: .8, rotation: 3 });
+
+      const workTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 85%',
+          end: 'center center',
+          scrub: .8,
+          invalidateOnRefresh: true
+        }
+      });
+
+      workTimeline
+        .to(decorations, { clipPath: 'inset(0 0% 0 0%)', webkitClipPath: 'inset(0 0% 0 0%)', duration: .42, ease: 'power2.inOut' }, .08)
+        .to(preview, { '--reveal-edge': '0%', duration: .62, ease: 'power2.inOut' }, .16)
+        .to(content, { autoAlpha: 1, y: 0, duration: .44, ease: 'power2.out' }, .3)
+        .to(badge, { scale: 1, rotation: 0, duration: .44, ease: 'power2.out' }, .08);
+    }
+
+    function initWorkCardThumbnailMotion() {
+      const configs = [
+        {
+          cardSelector: '.work-card--peoplehum',
+          boundsClip: 'inset(29.21% 6.456% 15.166% 47.598%)',
+          revealStart: '93.544%',
+          revealEnd: '47.598%',
+          decorationX: -72,
+          decorationY: 22,
+          decorationRotation: -9,
+          decorationOrigin: '34% 16%',
+          overshootX: 7,
+          overshootY: -4,
+          overshootRotation: 1.5
+        },
+        {
+          cardSelector: '.work-card--cosoot',
+          boundsClip: 'inset(30.555% 3.702% 14.469% 50.583%)',
+          revealStart: '96.298%',
+          revealEnd: '50.583%',
+          decorationX: -88,
+          decorationY: 30,
+          decorationRotation: -8,
+          decorationOrigin: '12% 58%',
+          overshootX: 6,
+          overshootY: -3,
+          overshootRotation: 1
+        },
+        {
+          cardSelector: '.work-card--zenskar',
+          boundsClip: 'inset(28.221% 0% 16.711% 49.243%)',
+          revealStart: '100%',
+          revealEnd: '49.243%',
+          decorationX: 82,
+          decorationY: 48,
+          decorationRotation: 10,
+          decorationOrigin: '48% 15%',
+          overshootX: -7,
+          overshootY: -4,
+          overshootRotation: -1.5
+        }
+      ];
+      const compactViewport = window.matchMedia('(max-width: 700px)');
+
+      if (!window.ScrollTrigger) return;
+      gsap.registerPlugin(ScrollTrigger);
+
+      configs.forEach((config) => {
+        const card = document.querySelector(config.cardSelector);
+        const layer = card?.querySelector('.work-card__thumbnail-layer');
+        const content = card?.querySelector('.work-card__content-motion');
+        const decoration = card?.querySelector('.work-card__decoration-motion');
+        if (!card || !layer || !content || !decoration) return;
+
+        if (reducedMotion.matches || compactViewport.matches) {
+          gsap.set(layer, { clipPath: 'none', webkitClipPath: 'none', '--reveal-edge': '0%' });
+          gsap.set([content, decoration], { autoAlpha: 0 });
+          return;
+        }
+
+        gsap.set(layer, { clipPath: config.boundsClip, webkitClipPath: config.boundsClip, '--reveal-edge': config.revealStart });
+        gsap.set(content, { autoAlpha: 0, y: 32 });
+        gsap.set(decoration, { autoAlpha: 0, x: config.decorationX, y: config.decorationY, scale: .86, rotation: config.decorationRotation, transformOrigin: config.decorationOrigin });
+        gsap.timeline({
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 92%',
+            end: 'center center',
+            scrub: .8,
+            invalidateOnRefresh: true
+          }
+        }).to(layer, {
+          '--reveal-edge': config.revealEnd,
+          duration: 1,
+          ease: 'power2.inOut'
+        })
+          .to(decoration, {
+            autoAlpha: 1,
+            x: config.overshootX,
+            y: config.overshootY,
+            scale: 1.035,
+            rotation: config.overshootRotation,
+            duration: .5,
+            ease: 'power3.out'
+          }, .08)
+          .to(decoration, { x: 0, y: 0, scale: 1, rotation: 0, duration: .18, ease: 'back.out(1.15)' }, .48)
+          .to(content, { autoAlpha: 1, y: 0, duration: .44, ease: 'power2.out' }, .3);
+      });
+    }
+
+    function initPageScrollProgress() {
+      const progress = document.querySelector('.page-scroll-progress');
+      const bar = progress?.querySelector('.page-scroll-progress__bar');
+      if (!progress || !bar) return;
+
+      let framePending = false;
+      const update = () => {
+        const root = document.documentElement;
+        const scrollTop = document.scrollingElement?.scrollTop ?? window.scrollY;
+        const scrollRange = Math.max(0, root.scrollHeight - window.innerHeight);
+        const ratio = scrollRange > 0 ? Math.min(1, Math.max(0, scrollTop / scrollRange)) : 0;
+
+        bar.style.transform = `scaleX(${ratio})`;
+        progress.setAttribute('aria-valuenow', String(Math.round(ratio * 100)));
+        framePending = false;
+      };
+
+      const requestUpdate = () => {
+        if (framePending) return;
+        framePending = true;
+        requestAnimationFrame(update);
+      };
+
+      window.addEventListener('scroll', requestUpdate, { passive: true });
+      window.addEventListener('resize', requestUpdate);
+      requestUpdate();
+    }
+
+    initPageScrollProgress();
+    initWorkCardScaleMotion();
+    initZacksWorkCardMotion();
+    initWorkCardThumbnailMotion();
   </script>
 </body>
 </html>

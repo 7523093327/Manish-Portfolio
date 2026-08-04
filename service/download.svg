@@ -1,0 +1,82 @@
+<svg width="1440" height="920" viewBox="0 0 1440 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g id="services-switchboard-body">
+    <rect id="body-shadow" x="76" y="112" width="1288" height="720" rx="34" fill="#1F1F1F" opacity="0.12"></rect>
+    
+    <rect id="machine-body" x="64" y="96" width="1288" height="720" rx="34" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="5"></rect>
+    <rect id="inner-line" x="84" y="118" width="1248" height="676" rx="24" fill="none" stroke="#1F1F1F" stroke-width="2" opacity="0.45"></rect>
+
+    <!-- top beacon -->
+    <g id="top-beacon">
+      <rect x="112" y="65" width="58" height="40" rx="8" fill="#1F1F1F"></rect>
+      <path d="M123 64C123 37 159 37 159 64V95H123V64Z" fill="#FF7648" stroke="#1F1F1F" stroke-width="4"></path>
+      <path d="M141 49C147 49 150 56 149 70" stroke="#FFD0B8" stroke-width="4" stroke-linecap="round"></path>
+      <path d="M103 47L90 35" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M179 47L192 35" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round"></path>
+      <path d="M141 24V8" stroke="#1F1F1F" stroke-width="3" stroke-linecap="round"></path>
+    </g>
+
+    <!-- left service slot area -->
+    <g id="left-service-area">
+      <rect x="116" y="160" width="430" height="560" rx="18" fill="#FFF9EF" stroke="#1F1F1F" stroke-width="3"></rect>
+      <rect x="136" y="184" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+      <rect x="136" y="274" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+      <rect x="136" y="364" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+      <rect x="136" y="454" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+      <rect x="136" y="544" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+      <rect x="136" y="634" width="390" height="72" rx="12" fill="#FFF6E8" stroke="#1F1F1F" stroke-width="2"></rect>
+    </g>
+
+    <!-- divider -->
+    <line x1="584" y1="118" x2="584" y2="794" stroke="#1F1F1F" stroke-width="2" opacity="0.35"></line>
+
+    <!-- right content area -->
+    <g id="right-content-shell">
+      <rect x="636" y="154" width="632" height="560" rx="22" fill="#FDF3E3" stroke="#1F1F1F" stroke-width="5"></rect>
+      <rect x="656" y="174" width="592" height="520" rx="16" fill="#FFF8EA" stroke="#1F1F1F" stroke-width="2" opacity="0.7"></rect>
+    </g>
+
+    <!-- bottom speaker -->
+    <g id="speaker-vent">
+      <rect x="414" y="748" width="120" height="44" rx="10" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="2" opacity="0.7"></rect>
+      <line x1="434" y1="759" x2="434" y2="780" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="450" y1="759" x2="450" y2="780" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="466" y1="759" x2="466" y2="780" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="482" y1="759" x2="482" y2="780" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"></line>
+      <line x1="498" y1="759" x2="498" y2="780" stroke="#1F1F1F" stroke-width="4" stroke-linecap="round"></line>
+    </g>
+
+    <!-- knobs -->
+    <g id="bottom-knobs">
+      <circle cx="1014" cy="768" r="33" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="3"></circle>
+      <circle cx="1014" cy="768" r="22" fill="#27231E" stroke="#1F1F1F" stroke-width="3"></circle>
+      <line x1="1014" y1="768" x2="1014" y2="750" stroke="#FFF6E8" stroke-width="4" stroke-linecap="round"></line>
+      
+      <circle cx="1094" cy="768" r="33" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="3"></circle>
+      <circle cx="1094" cy="768" r="22" fill="#27231E" stroke="#1F1F1F" stroke-width="3"></circle>
+      <line x1="1094" y1="768" x2="1094" y2="750" stroke="#FFF6E8" stroke-width="4" stroke-linecap="round"></line>
+      
+      <circle cx="1174" cy="768" r="33" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="3"></circle>
+      <circle cx="1174" cy="768" r="22" fill="#27231E" stroke="#1F1F1F" stroke-width="3"></circle>
+      <line x1="1174" y1="768" x2="1174" y2="750" stroke="#FFF6E8" stroke-width="4" stroke-linecap="round"></line>
+    </g>
+
+    <!-- screws -->
+    <g id="screws">
+      <circle cx="98" cy="132" r="10" fill="#CDBFA8" stroke="#1F1F1F" stroke-width="2"></circle>
+      <circle cx="1318" cy="132" r="10" fill="#CDBFA8" stroke="#1F1F1F" stroke-width="2"></circle>
+      <circle cx="98" cy="780" r="10" fill="#CDBFA8" stroke="#1F1F1F" stroke-width="2"></circle>
+      <circle cx="1318" cy="780" r="10" fill="#CDBFA8" stroke="#1F1F1F" stroke-width="2"></circle>
+    </g>
+
+    <!-- plant -->
+    <g id="plant">
+      <ellipse cx="134" cy="828" rx="70" ry="10" fill="#1F1F1F" opacity="0.12"></ellipse>
+      <rect x="96" y="760" width="76" height="74" rx="8" fill="#FF7648" stroke="#1F1F1F" stroke-width="3"></rect>
+      <rect x="88" y="742" width="92" height="34" rx="6" fill="#FF8C64" stroke="#1F1F1F" stroke-width="3"></rect>
+      <path d="M132 744C108 705 112 662 132 628C154 672 154 713 132 744Z" fill="#86A74B" stroke="#1F1F1F" stroke-width="3"></path>
+      <path d="M112 748C82 724 74 684 84 650C112 678 124 716 112 748Z" fill="#9BB85A" stroke="#1F1F1F" stroke-width="3"></path>
+      <path d="M154 748C188 724 196 684 184 650C154 678 142 716 154 748Z" fill="#6F9441" stroke="#1F1F1F" stroke-width="3"></path>
+      <path d="M132 744C134 708 134 674 132 638" stroke="#1F1F1F" stroke-width="2" opacity="0.6"></path>
+    </g>
+  </g>
+</svg>
