@@ -5,16 +5,16 @@ svg { overflow: visible; }
   0% {
     transform: translateY(4.595px) translate(27.201px, 27.201px) rotate(0rad) translate(-27.201px, -27.201px);
   }
-  29.8% {
-    transform: translateY(4.595px) translate(27.201px, 27.201px) rotate(1.571rad) translate(-27.201px, -27.201px);
-  }
   100% {
-    transform: translateY(4.595px) translate(27.201px, 27.201px) rotate(1.571rad) translate(-27.201px, -27.201px);
+    transform: translateY(4.595px) translate(27.201px, 27.201px) rotate(6.283rad) translate(-27.201px, -27.201px);
   }
 }
 #featured-work-icon {
   transform-origin: 0 0;
-  animation: kf_featured-work-icon_transform_0 2s linear infinite;
+  animation: kf_featured-work-icon_transform_0 8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  #featured-work-icon { animation: none; }
 }
 </style>
 <g id="featured-work-header">

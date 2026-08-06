@@ -1,0 +1,212 @@
+Study the attached reference GIF for the Services section and implement the same interaction pattern in code.
+
+Context:
+I have separate SVG assets already prepared:
+- the main services machine body
+- the left 8-bit service display modules
+- the right active service screen/panel
+- illustration assets for each service
+- optional decorative elements like siren, knobs, screws, shadows
+
+Do not redesign the section.
+Use the SVGs as the visual source.
+The task is to implement the interaction and transition behavior shown in the GIF.
+
+Section concept:
+This is an interactive “Services Switchboard”.
+The left side contains 6 clickable 8-bit display modules.
+The right side contains one large active service screen.
+When a service becomes active, the corresponding left display lights up, and the right screen changes content.
+
+Services:
+1. Product Design
+2. UX Research
+3. UI Design
+4. Design Systems
+5. Website Design
+6. Visual Design
+
+Main behavior:
+The left service modules auto-cycle one by one.
+The active service changes automatically every few seconds.
+Users can also click any left module to make it active.
+
+Important visual behavior from the GIF:
+1. Left modules are normally inactive.
+2. Inactive modules have a dark 8-bit screen with low brightness.
+3. The active module does NOT highlight the full outer module body.
+4. Only the inner 8-bit display/screen lights up.
+5. The active screen gets a blue glow.
+6. The active text becomes brighter.
+7. The glow should feel like a retro LED/pixel display turning on.
+8. The glow should fade smoothly, not switch instantly.
+
+Left module transition:
+When a new module becomes active:
+- previous active screen fades back to dark
+- previous screen glow fades out
+- new screen glow fades in
+- new service text becomes brighter
+- the active screen gets a subtle inner blue illumination
+- the outer metal/body frame remains mostly unchanged
+
+Use these state classes:
+.service-module
+.service-module.is-active
+.service-module__screen
+.service-module__screen-glow
+.service-module__label
+
+Inactive state:
+- screen background: very dark green/black
+- label opacity: around 0.45 to 0.6
+- glow opacity: 0
+- no strong blue border
+
+Active state:
+- screen glow opacity: 1
+- label opacity: 1
+- label color: bright blue or pale electric blue
+- screen border/glow becomes blue
+- optional slight text-shadow/glow
+
+Right screen behavior:
+The right screen is a single large panel.
+It should update based on the active service.
+
+When active service changes:
+- old content fades out
+- screen briefly dims or transitions
+- new content fades in
+- service title appears
+- short description appears
+- service illustration appears
+- “What you get” bullets appear
+
+The right panel should feel like a display screen changing state, not a full page reload.
+
+Right screen transition:
+Use a soft transition:
+- opacity: 0 → 1
+- y: 12px → 0
+- scale: 0.98 → 1
+- duration: 350–500ms
+- easing: ease-out
+
+Screen reflection:
+Important detail from the GIF:
+The right screen has a slow diagonal reflection/highlight moving across it.
+This should be a subtle glossy light streak moving diagonally from top-left to bottom-right or bottom-left to top-right.
+It should be very slow and continuous.
+It should sit above the screen background but below the content.
+It should not distract from text/illustration.
+
+Implement reflection as:
+- a pseudo-element on the right screen
+- linear-gradient with transparent edges and soft white/blue center
+- position absolute
+- transform rotate(-18deg) or similar
+- animate background/translate slowly
+- duration around 6–10s
+- opacity around 0.18–0.28
+
+Example:
+.screen-reflection {
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    transparent 35%,
+    rgba(255,255,255,0.28) 48%,
+    rgba(255,255,255,0.10) 55%,
+    transparent 68%
+  );
+  transform: translateX(-45%) rotate(-12deg);
+  animation: screenReflection 8s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes screenReflection {
+  from { transform: translateX(-45%) rotate(-12deg); }
+  to { transform: translateX(45%) rotate(-12deg); }
+}
+
+Right screen content layout:
+Keep it visually heavy and short:
+- Service title
+- one short line
+- large illustration
+- 3–4 short bullet items
+
+Do not add long paragraphs.
+
+Example content structure:
+ACTIVE SERVICE
+UI Design
+Clean interfaces that feel easy to use.
+
+[service illustration]
+
+WHAT YOU GET
+Screens
+Prototypes
+Components
+Handoff
+
+Auto-cycle:
+- Cycle through services every 2500–3500ms.
+- When user hovers the switchboard or clicks a service, pause auto-cycle briefly.
+- On click, immediately set selected service active.
+- Optional: resume auto-cycle after 6–8 seconds of no interaction.
+
+Click behavior:
+- Each left module should be a button.
+- On click:
+  - set activeService
+  - update left module active state
+  - update right screen content
+  - restart/pause auto-cycle timer
+
+Accessibility:
+- Use real button elements for left service modules.
+- Add aria-pressed for active module.
+- Add aria-label like “Show Product Design service”.
+- Right panel should update without breaking keyboard navigation.
+- Respect prefers-reduced-motion.
+
+Reduced motion:
+If prefers-reduced-motion is enabled:
+- disable auto-cycling
+- disable reflection animation
+- service changes should be instant or simple fade
+- keep click interactions working
+
+Implementation notes:
+- Do not create six separate right panels stacked visually unless needed.
+- Prefer one right panel where content changes from data.
+- Store service data in an array:
+  title
+  shortDescription
+  bullets
+  illustration
+  icon
+- Map over the services array to render left modules.
+- Render active service details on the right.
+
+Desired final result:
+A retro services switchboard where the left 8-bit screens automatically light up one by one, users can click any service, and the right display smoothly changes to show that service. The right screen also has a subtle slow diagonal reflection moving across it continuously.
+
+Short correction prompt if Codex overdoes it:
+
+Correction:
+Do not highlight the whole left module.
+Only the inner 8-bit display screen should glow.
+
+Do not add long text.
+Right panel should be mostly visual with short copy.
+
+Do not remove the slow diagonal screen reflection.
+It should move subtly across the right display.
+
+Do not duplicate service panels.
+Use one active panel and swap content from data.
