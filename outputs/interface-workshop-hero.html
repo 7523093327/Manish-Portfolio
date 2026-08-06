@@ -53,7 +53,13 @@
     @media(min-width:701px){.page{height:100svh;min-height:720px;padding-bottom:22px}.hero{padding-top:clamp(26px,3.4vh,50px)}.process-wrap{width:min(92%,1180px);margin-bottom:clamp(20px,2.6vh,32px)}.headline{font-size:clamp(42px,4.65vw,70px);line-height:.98}.subcopy{margin-top:clamp(14px,1.8vh,20px);font-size:clamp(14px,1.15vw,16px);line-height:1.45}.actions{margin:clamp(18px,2.2vh,25px) auto 0}.nav-cta{gap:8px}.nav-cta__icon{font-size:16px;line-height:1;transform:translateY(-1px)}}
   </style>
   <style>
-    .featured-work-section{position:relative;z-index:1;background:var(--paper);padding:clamp(48px,5vw,72px) clamp(22px,5vw,76px) clamp(120px,12vw,190px);overflow:visible}.featured-work-inner{max-width:none;margin:0}.featured-work-header{position:sticky;top:96px;z-index:2;isolation:isolate;width:fit-content;margin-left:clamp(0px,4vw,80px);pointer-events:none}.featured-work-header::before{content:"";position:absolute;z-index:-2;top:-120px;bottom:-36px;left:-160px;width:calc(100vw + 160px);background:var(--paper);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 48px),transparent 100%)}.featured-work-header h2{position:relative;display:inline-block;margin:0;font:600 48px/.95 Fraunces,serif;letter-spacing:-.06em;white-space:nowrap}.featured-work-header h2::after{content:"";position:absolute;z-index:-1;left:-2px;right:-4px;bottom:.04em;height:.18em;background:rgba(40,84,239,.54);transform:rotate(-2.8deg);border-radius:55% 18% 43% 20%}.featured-work-cards{display:flex;flex-direction:column;align-items:center;gap:clamp(74px,8vw,120px);margin-top:46px}.work-card{position:relative;display:block;width:min(74.8vw,1275px);margin-inline:auto;overflow:visible;text-decoration:none;color:inherit}.work-card__artwork{position:relative;display:block;width:100%;aspect-ratio:1920/880;overflow:hidden}.work-card__artwork img{position:absolute;left:0;top:0;display:block;width:100%;height:auto;transform:translateY(-12.96%)}.work-card__cta-overlay{position:absolute;z-index:2;left:20%;top:57%;width:15%;height:5.5%;border-radius:8px;outline:2px solid transparent;outline-offset:4px;transition:background .2s,outline-color .2s}.work-card__cta-overlay:hover,.work-card__cta-overlay:focus-visible{background:rgba(40,84,239,.14);outline-color:var(--blue)}.work-card:focus-visible{outline:3px solid var(--blue);outline-offset:8px}@media(max-width:700px){.featured-work-section{padding:48px 20px 78px}.featured-work-header{position:static;margin:0 0 42px}.featured-work-header::before{display:none}.featured-work-header h2{font-size:48px}.featured-work-cards{gap:42px;margin-top:0}.work-card{width:100%}.work-card__artwork{aspect-ratio:1920/900}.work-card__cta-overlay{left:20%;top:56%;width:23%;height:8%}}
+    .featured-work-section{position:relative;z-index:1;background:var(--paper);padding:clamp(48px,5vw,72px) clamp(22px,5vw,76px) clamp(120px,12vw,190px);overflow:visible}.featured-work-inner{max-width:none;margin:0}.featured-work-header{position:sticky;top:96px;z-index:2;isolation:isolate;width:fit-content;margin-left:clamp(0px,4vw,80px);pointer-events:none;will-change:transform}.featured-work-header::before{content:"";position:absolute;z-index:-2;top:-120px;bottom:-36px;left:-160px;width:calc(100vw + 160px);background:var(--paper);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 48px),transparent 100%)}.featured-work-header h2{position:relative;display:inline-block;margin:0;font:600 48px/.95 Fraunces,serif;letter-spacing:-.06em;white-space:nowrap}.featured-work-header h2::after{content:"";position:absolute;z-index:-1;left:-2px;right:-4px;bottom:.04em;height:.18em;background:rgba(40,84,239,.54);transform:rotate(-2.8deg);border-radius:55% 18% 43% 20%}.featured-work-cards{display:flex;flex-direction:column;align-items:center;gap:clamp(74px,8vw,120px);margin-top:46px}.work-card{position:relative;display:block;width:min(74.8vw,1275px);margin-inline:auto;overflow:visible;text-decoration:none;color:inherit}.work-card__artwork{position:relative;display:block;width:100%;aspect-ratio:1920/880;overflow:hidden}.work-card__artwork img{position:absolute;left:0;top:0;display:block;width:100%;height:auto;transform:translateY(-12.96%)}.work-card__cta-overlay{position:absolute;z-index:2;left:20%;top:57%;width:15%;height:5.5%;border-radius:8px;outline:2px solid transparent;outline-offset:4px;transition:background .2s,outline-color .2s}.work-card__cta-overlay:hover,.work-card__cta-overlay:focus-visible{background:rgba(40,84,239,.14);outline-color:var(--blue)}.work-card:focus-visible{outline:3px solid var(--blue);outline-offset:8px}@media(max-width:700px){.featured-work-section{padding:48px 20px 78px}.featured-work-header{position:static;margin:0 0 42px;will-change:auto}.featured-work-header::before{display:none}.featured-work-header h2{font-size:48px}.featured-work-cards{gap:42px;margin-top:0}.work-card{width:100%}.work-card__artwork{aspect-ratio:1920/900}.work-card__cta-overlay{left:20%;top:56%;width:23%;height:8%}}
+  </style>
+  <style>
+    .featured-work-header h2{line-height:0}.featured-work-header h2::after{display:none}.featured-work-header__art{display:block;width:min(392px,calc(100vw - 40px));height:auto}
+  </style>
+  <style>
+    .services-section{position:relative;z-index:1;background:var(--paper);padding:clamp(48px,5vw,72px) 0 clamp(96px,10vw,150px)}.services-section__inner{max-width:none}.services-section__header{position:sticky;top:96px;z-index:3;isolation:isolate;width:fit-content;margin:0 0 46px calc(clamp(22px,5vw,76px) + clamp(0px,4vw,80px));pointer-events:none}.services-section__header::before{content:"";position:absolute;z-index:-2;top:-120px;bottom:-36px;left:-160px;width:calc(100vw + 160px);background:var(--paper);mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 48px),transparent 100%)}.services-section__heading{display:flex;align-items:center;gap:12px;margin:0;font:600 48px/.95 Fraunces,serif;letter-spacing:-.06em;white-space:nowrap}.services-section__heading-icon{display:block;flex:0 0 60px;width:60px;height:60px;overflow:visible;color:var(--blue);transform-origin:50% 50%;animation:services-heading-icon-spin 8s linear infinite}.services-switchboard{position:relative;width:min(74.8vw,1275px);margin-inline:auto;aspect-ratio:1510/818}.services-switchboard__body{display:block;width:100%;height:100%}.service-beacon{position:absolute;z-index:4;left:2.242%;top:-2.423%;width:6.954%;height:auto;opacity:0;pointer-events:none;transform-origin:50% 78%;will-change:opacity,transform}.services-switchboard.is-beacon-on .service-beacon{opacity:1;animation:service-beacon-power-on .18s ease-out both}.service-knobs{position:absolute;z-index:4;left:77.559%;top:87.376%;width:12.914%;height:auto;overflow:visible;opacity:1;pointer-events:none}.service-knob__needle{transform-box:view-box;will-change:transform}.service-knob__needle[data-knob-index="0"]{transform-origin:29.258px 27.9px}.service-knob__needle[data-knob-index="1"]{transform-origin:97.385px 27.9px}.service-knob__needle[data-knob-index="2"]{transform-origin:165.512px 27.9px}.service-module{position:absolute;z-index:3;left:var(--module-left);top:var(--module-top);width:26.22%;aspect-ratio:396/78;padding:0;border:0;background:transparent;cursor:pointer}.service-module__off,.service-module__on{position:absolute;inset:0;display:block;width:100%;height:100%}.service-module__off{opacity:1}.service-module__on{opacity:0;clip-path:inset(21.795% 9.091% 25.641% 9.343%);transition:opacity .2s ease-in;will-change:opacity,clip-path}.service-module.is-active .service-module__on{opacity:1;animation:service-module-led-wipe 2.35s linear both}.service-module:focus-visible{outline:3px solid var(--blue);outline-offset:4px;border-radius:8px}.service-screen{position:absolute;z-index:2;left:45.36%;top:27.87%;width:45.63%;aspect-ratio:689/518;overflow:hidden;border-radius:2.5%}.service-screen__base,.service-screen__reflection{position:absolute;inset:0;width:100%;height:100%}.service-screen__base{z-index:0}.service-screen__reflection{z-index:1;opacity:.24;animation:service-screen-reflection 8s linear infinite;pointer-events:none}.service-screen__content{position:absolute;z-index:2;left:5%;top:4%;width:90%;height:92%;object-fit:contain}.service-screen__content.is-changing{animation:service-content-channel-switch .24s steps(2,end) both;will-change:transform,opacity}@keyframes service-content-channel-switch{0%{opacity:1;transform:translateX(0)}16%{opacity:.86;transform:translateX(-3px)}32%{opacity:.65;transform:translateX(3px)}48%,52%{opacity:.04;transform:translateX(-2px)}68%{opacity:.72;transform:translateX(2px)}84%{opacity:.92;transform:translateX(-1px)}100%{opacity:1;transform:translateX(0)}}@keyframes service-screen-signal-switch{0%,100%{opacity:0;transform:translateY(0)}18%{opacity:.26;transform:translateY(-2px)}38%{opacity:.42;transform:translateY(2px)}52%{opacity:.34;transform:translateY(-1px)}72%{opacity:.18;transform:translateY(1px)}}@keyframes service-module-led-wipe{0%{opacity:1;clip-path:inset(21.795% 90.657% 25.641% 9.343%);filter:brightness(.92)}8%{opacity:1;filter:brightness(1.04)}100%{opacity:1;clip-path:inset(21.795% 9.091% 25.641% 9.343%);filter:brightness(1)}}@keyframes service-beacon-power-on{from{opacity:.45;transform:scale(.98)}to{opacity:1;transform:scale(1)}}@keyframes services-heading-icon-spin{to{transform:rotate(360deg)}}@keyframes service-screen-reflection{from{transform:translateX(-7%)}to{transform:translateX(7%)}}@media(max-width:700px){.services-section{padding:48px 0 88px}.services-section__header{position:static;margin:0 0 32px 20px}.services-section__header::before{display:none}.services-section__heading{font-size:48px}.services-switchboard{width:100%}.service-screen__reflection{animation:none}}@media(prefers-reduced-motion:reduce){.featured-work-header,.services-section__header{position:static;transform:none!important}.featured-work-header::before,.services-section__header::before{display:none}.services-section__heading-icon{animation:none}.service-module__on,.service-screen__content{transition:none;animation:none}.service-module.is-active .service-module__on{opacity:1;clip-path:inset(21.795% 9.091% 25.641% 9.343%);filter:none}.services-switchboard.is-beacon-on .service-beacon{animation:none;opacity:1}.service-screen__reflection{animation:none}.service-screen.is-switching::after{animation:none;opacity:0}.service-screen__content.is-changing{animation:none;opacity:1;transform:none}}
   </style>
   <style>
     .work-card--zacks{transform-origin:50% 50%;will-change:transform,opacity}
@@ -88,6 +94,18 @@
     .page-scroll-progress__bar{width:100%;height:100%;background:var(--blue);box-shadow:0 0 12px rgba(40,84,239,.3);transform:scaleX(0);transform-origin:left center;will-change:transform}
     @media(max-width:700px){.page-scroll-progress{height:3px}}
     @media(prefers-reduced-motion:reduce){.page-scroll-progress__bar{will-change:auto}}
+  </style>
+  <style>
+    .services-section__header{position:static;top:auto;z-index:auto;isolation:auto}.services-section__header::before{display:none}
+    .featured-work-section{padding-bottom:clamp(28px,2.5vw,32px)}.services-section{padding-top:clamp(32px,3.125vw,40px)}
+    .service-screen{left:45.55%;top:20.16%;width:45.63%;aspect-ratio:689/518;overflow:hidden;clip-path:inset(0 round 2.5%);isolation:isolate;background:transparent;box-shadow:none}.service-screen__base,.service-screen__glitch-base{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}.service-screen__base{z-index:0;background:linear-gradient(145deg,#adbef9 0%,#91a9fa 48%,#829bf1 100%)}.service-screen__glitch-base{z-index:1;object-fit:fill;opacity:0}.service-screen__shine-track{position:absolute;z-index:2;left:-55%;top:-55%;width:46%;height:210%;opacity:.16;overflow:visible;pointer-events:none;transform:translate3d(160%,0,0) rotate(35deg)}.service-screen__shine{position:absolute;inset:0;display:block;background:linear-gradient(90deg,transparent 0 12%,rgba(255,255,255,.16) 22%,rgba(255,255,255,.92) 45%,rgba(255,255,255,.34) 63%,transparent 84% 100%);filter:blur(.2px);pointer-events:none}.service-screen__content{z-index:3;left:6.97%;top:3.67%;width:var(--content-width);height:91.89%;padding:0;object-fit:fill}.service-screen::after{content:"";position:absolute;z-index:4;inset:0;opacity:0;pointer-events:none;background:linear-gradient(to bottom,transparent 0 20%,rgba(255,249,239,.42) 20% 22%,transparent 22% 61%,rgba(37,90,232,.28) 61% 64%,transparent 64%),repeating-linear-gradient(to bottom,rgba(31,31,31,.12) 0 1px,transparent 1px 5px)}.service-screen.is-switching::after{animation:service-screen-signal-switch .24s steps(2,end) both}.service-screen.is-switching .service-screen__glitch-base{animation:service-screen-dark-flicker .24s steps(1,end) both}@keyframes service-screen-dark-flicker{0%,11%,27%,43%,61%,77%,91%,100%{opacity:0}12%,26%{opacity:.92}44%,60%{opacity:.78}78%,90%{opacity:.9}}@media(prefers-reduced-motion:reduce){.service-screen__glitch-base{animation:none!important;opacity:0}}
+    .visually-hidden{position:absolute!important;width:1px!important;height:1px!important;padding:0!important;margin:-1px!important;overflow:hidden!important;clip:rect(0,0,0,0)!important;white-space:nowrap!important;border:0!important}
+  </style>
+  <style>
+    .brand{flex:0 0 auto;white-space:nowrap}.featured-work-section{overflow-x:clip}
+    @media(max-width:719px){.nav-links,.nav-cta{display:none}.mobile-menu{display:grid;min-width:44px;min-height:44px;place-items:center}}
+    @media(min-width:701px) and (max-width:1023px){.page{height:auto;min-height:0;padding-bottom:clamp(64px,8vw,80px)}}
+    @media(max-width:700px){.process-wrap{width:100%;margin-left:0}.process-scene{width:100%;min-width:0;transform:none}.services-switchboard{width:calc(100% - 40px)}}
   </style>
 </head>
 <body>
@@ -330,7 +348,7 @@
           <i class="belt-puck" aria-hidden="true"></i><i class="belt-puck orange" aria-hidden="true"></i><i class="belt-puck lime" aria-hidden="true"></i>
           <button class="replay-motion" id="replay-motion" type="button">Replay motion ↻</button>
         </div>
-        <p class="eyebrow">PRODUCT DESIGNER · UI/UX · VISUAL DESIGN · AI WORKFLOWS</p>
+        <p class="eyebrow">M.Des, IIT Guwahati · 2+ years across SaaS, HRIS &amp; fintech · AI-assisted design workflow</p>
         <h1 class="headline" id="hero-title">I shape messy product ideas into <span class="underlined">interfaces</span> people understand.</h1>
         <p class="subcopy">I work with teams to simplify complex workflows, design scalable interfaces, and ship polished product experiences.</p>
         <div class="actions"><a class="button primary" href="#work">View Selected Work <span aria-hidden="true">↗</span></a><a class="button secondary" href="#contact">Start a Project <span aria-hidden="true">↗</span></a></div>
@@ -354,7 +372,7 @@
   </section>
   <section class="featured-work-section" id="work" aria-labelledby="featured-work-title">
     <div class="featured-work-inner">
-      <header class="featured-work-header"><h2 id="featured-work-title">Featured work</h2></header>
+      <header class="featured-work-header"><h2 class="visually-hidden" id="featured-work-title">Featured work</h2><img class="featured-work-header__art" src="../featured-work-header-1.svg" alt="" aria-hidden="true"></header>
       <div class="featured-work-cards">
         <a class="work-card work-card--zacks" href="/work/zacks-insights" aria-label="View Zacks Insights case study">
           <span class="work-card__artwork work-card__artwork--layered" data-work-motion>
@@ -370,6 +388,45 @@
         <a class="work-card work-card--peoplehum" href="/work/peoplehum" aria-label="View peopleHum case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_peoplehum.svg" alt="peopleHum case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-02-peoplehum.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_peoplehum.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_peoplehum.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
         <a class="work-card work-card--cosoot" href="/work/cosoot-sustainability" aria-label="View Cosoot Sustainability case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_cosoot.svg" alt="Cosoot Sustainability case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-03-cosoot.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_cosoot.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_cosoot.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
         <a class="work-card work-card--zenskar" href="/work/zenskar" aria-label="View Zenskar case study"><span class="work-card__artwork work-card__artwork--thumbnail-reveal"><img class="work-card__thumbnail-base" src="../Scroll animation/card_base_zenskar.svg" alt="Zenskar case study card"><img class="work-card__thumbnail-layer" src="../Featured work sections/work-card-04-zenskar.svg" alt="" aria-hidden="true"><span class="work-card__content-motion"><img class="work-card__content-layer" src="../Scroll animation/card_content_zenskar.svg" alt="" aria-hidden="true"></span><span class="work-card__decoration-motion"><img class="work-card__decoration-layer" src="../Scroll animation/card_decoration_zenskar.svg" alt="" aria-hidden="true"></span></span><span class="work-card__cta-overlay" aria-hidden="true"></span></a>
+      </div>
+    </div>
+  </section>
+  <section class="services-section" id="services" aria-labelledby="services-title">
+    <div class="services-section__inner">
+      <header class="services-section__header">
+        <h2 class="services-section__heading" id="services-title"><svg class="services-section__heading-icon" viewBox="0 0 60 60" aria-hidden="true" focusable="false"><path transform="translate(0 4.59502)" d="M27.0166 24.335L43.3828 7.96875L46.2119 10.7969L29.7988 27.21H54.4014V31.21H29.6035L45.2588 46.8652L42.4297 49.6934L27.0166 34.2793V54.4014H23.0166V33.9922L7.74414 49.2646L4.91602 46.4365L20.1426 31.21H0V27.21H19.9473L3.96289 11.2256L6.79102 8.39746L23.0166 24.623V0H27.0166V24.335Z" fill="currentColor"/></svg><span>Services</span></h2>
+      </header>
+      <div class="services-switchboard" data-service-switchboard>
+        <img class="services-switchboard__body" src="../Service animation/services.svg" alt="">
+        <img class="service-beacon" src="../Service animation/top-beacon-on.svg?v=20260805-010631" alt="" aria-hidden="true">
+        <svg class="service-knobs" viewBox="0 0 195 56" fill="none" aria-hidden="true" focusable="false">
+          <path d="M29.258 54.6442C44.7785 54.6442 57.3604 42.6705 57.3604 27.9002C57.3604 13.1299 44.7785 1.15625 29.258 1.15625C13.7374 1.15625 1.15552 13.1299 1.15552 27.9002C1.15552 42.6705 13.7374 54.6442 29.258 54.6442Z" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path d="M29.2582 45.7289C39.6052 45.7289 47.9931 37.7465 47.9931 27.8996C47.9931 18.0528 39.6052 10.0703 29.2582 10.0703C18.9111 10.0703 10.5232 18.0528 10.5232 27.8996C10.5232 37.7465 18.9111 45.7289 29.2582 45.7289Z" fill="#27231E" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path class="service-knob__needle" data-knob-index="0" data-angle="0" d="M29.2581 27.9021V13.3145" stroke="#FFF6E8" stroke-width="3.08131" stroke-linecap="round"/>
+          <path d="M97.3852 54.6442C112.906 54.6442 125.488 42.6705 125.488 27.9002C125.488 13.1299 112.906 1.15625 97.3852 1.15625C81.8646 1.15625 69.2827 13.1299 69.2827 27.9002C69.2827 42.6705 81.8646 54.6442 97.3852 54.6442Z" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path d="M97.3854 45.7289C107.732 45.7289 116.12 37.7465 116.12 27.8996C116.12 18.0528 107.732 10.0703 97.3854 10.0703C87.0383 10.0703 78.6504 18.0528 78.6504 27.8996C78.6504 37.7465 87.0383 45.7289 97.3854 45.7289Z" fill="#27231E" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path class="service-knob__needle" data-knob-index="1" data-angle="0" d="M97.3853 27.9021V13.3145" stroke="#FFF6E8" stroke-width="3.08131" stroke-linecap="round"/>
+          <path d="M165.512 54.6442C181.033 54.6442 193.615 42.6705 193.615 27.9002C193.615 13.1299 181.033 1.15625 165.512 1.15625C149.992 1.15625 137.41 13.1299 137.41 27.9002C137.41 42.6705 149.992 54.6442 165.512 54.6442Z" fill="#EFE2CE" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path d="M165.512 45.7289C175.859 45.7289 184.247 37.7465 184.247 27.8996C184.247 18.0528 175.859 10.0703 165.512 10.0703C155.165 10.0703 146.777 18.0528 146.777 27.8996C146.777 37.7465 155.165 45.7289 165.512 45.7289Z" fill="#27231E" stroke="#1F1F1F" stroke-width="2.31098"/>
+          <path class="service-knob__needle" data-knob-index="2" data-angle="0" d="M165.512 27.9021V13.3145" stroke="#FFF6E8" stroke-width="3.08131" stroke-linecap="round"/>
+        </svg>
+        <div class="service-modules" role="group" aria-label="Choose a service">
+          <button class="service-module is-active" type="button" style="--module-left:7.114%;--module-top:21.214%" data-service-index="0" aria-pressed="true" aria-label="Show Product Design service"><img class="service-module__off" src="../Service animation/Product Design service-display-module off-1.svg" alt=""><img class="service-module__on" src="../Service animation/Product Design service-display-module off.svg" alt=""></button>
+          <button class="service-module" type="button" style="--module-left:7.040%;--module-top:32.019%" data-service-index="1" aria-pressed="false" aria-label="Show UX Research service"><img class="service-module__off" src="../Service animation/UX Research service-display-module off.svg" alt=""><img class="service-module__on" src="../Service animation/UX Research service-display-module on.svg" alt=""></button>
+          <button class="service-module" type="button" style="--module-left:7.261%;--module-top:42.217%" data-service-index="2" aria-pressed="false" aria-label="Show UI Design service"><img class="service-module__off" src="../Service animation/UI Design service-display-module off.svg" alt=""><img class="service-module__on" src="../Service animation/UI Design service-display-module on.svg" alt=""></button>
+          <button class="service-module" type="button" style="--module-left:7.187%;--module-top:53.023%" data-service-index="3" aria-pressed="false" aria-label="Show Design Systems service"><img class="service-module__off" src="../Service animation/Design Systems service-display-module off.svg" alt=""><img class="service-module__on" src="../Service animation/Design Systems service-display-module on.svg" alt=""></button>
+          <button class="service-module" type="button" style="--module-left:7.408%;--module-top:63.221%" data-service-index="4" aria-pressed="false" aria-label="Show Website Design service"><img class="service-module__off" src="../Service animation/Website Design service-display-module off.svg" alt=""><img class="service-module__on" src="../Service animation/Website Design service-display-module on.svg" alt=""></button>
+          <button class="service-module" type="button" style="--module-left:7.334%;--module-top:74.027%" data-service-index="5" aria-pressed="false" aria-label="Show Visual Design service"><img class="service-module__off" src="../Service animation/Visual Design service-display-module off.svg" alt=""><img class="service-module__on" src="../Service animation/Visual Design service-display-module on.svg" alt=""></button>
+        </div>
+        <div class="service-screen" aria-live="polite">
+          <!-- The supplied normal/dark screen filenames are visually reversed. -->
+          <div class="service-screen__base" aria-hidden="true"></div>
+          <img class="service-screen__glitch-base" src="../Service animation/Normal screen.svg" alt="" aria-hidden="true">
+          <div class="service-screen__shine-track" aria-hidden="true">
+            <span class="service-screen__shine"></span>
+          </div>
+          <img class="service-screen__content" style="--content-width:64.73%" src="../Service animation/Product design.svg" alt="Product Design service details">
+        </div>
       </div>
     </div>
   </section>
@@ -657,6 +714,31 @@
       });
     }
 
+    function initSectionHeadingHandoff() {
+      const featuredHeader = document.querySelector('.featured-work-header');
+      const zenskar = document.querySelector('.work-card--zenskar');
+      const motion = window.gsap;
+      const scrollTrigger = window.ScrollTrigger;
+
+      if (!featuredHeader || !zenskar || !motion?.matchMedia || !scrollTrigger) return;
+      motion.registerPlugin(scrollTrigger);
+
+      const media = motion.matchMedia();
+      media.add('(min-width: 701px) and (prefers-reduced-motion: no-preference)', () =>
+        motion.to(featuredHeader, {
+          y: () => -(window.innerHeight * .4 + 100),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: zenskar,
+            start: 'top 40%',
+            end: 'top -100px',
+            scrub: true,
+            invalidateOnRefresh: true
+          }
+        })
+      );
+    }
+
     function initZacksWorkCardMotion() {
       const card = document.querySelector('.work-card--zacks');
       const master = card?.querySelector('.work-card__master');
@@ -818,10 +900,197 @@
       requestUpdate();
     }
 
+    function initServiceSwitchboard() {
+      const board = document.querySelector('[data-service-switchboard]');
+      const modules = [...board?.querySelectorAll('.service-module') ?? []];
+      const screen = board?.querySelector('.service-screen');
+      const content = board?.querySelector('.service-screen__content');
+      const knobs = board?.querySelector('.service-knobs');
+      const knobNeedles = [...knobs?.querySelectorAll('.service-knob__needle') ?? []];
+      const services = [
+        ['Product Design', '../Service animation/Product design.svg', '64.73%'],
+        ['UX Research', '../Service animation/UX Design.svg', '78.37%'],
+        ['UI Design', '../Service animation/UI Design.svg', '67.02%'],
+        ['Design Systems', '../Service animation/Design Systems.svg', '72.42%'],
+        ['Website Design', '../Service animation/Website Design.svg', '82.87%'],
+        ['Visual Design', '../Service animation/Visual Design.svg', '79.39%']
+      ];
+      const knobAngles = [
+        [0, 0, 0],
+        [-45, 45, 75],
+        [60, -30, -45],
+        [-120, 45, -105],
+        [-240, -120, 60],
+        [-360, 0, 0]
+      ];
+      let activeServiceIndex = 0;
+      let contentSwapTimer;
+      let glitchCleanupTimer;
+      const serviceContentSwapMs = 120;
+      const serviceGlitchDurationMs = 240;
+      const moduleFillMs = 2350;
+      const knobCatchupOffset = serviceGlitchDurationMs / moduleFillMs;
+      const knobEasing = 'cubic-bezier(0.2, 0, 0, 1)';
+      const beaconHandoffMs = 160;
+      let beaconHandoffTimer;
+      let knobAnimations = [];
+      let knobSequence = 0;
+
+      if (!board || !screen || !content || !knobs || !modules.length) return;
+
+      const nearestEquivalentAngle = (target, current) => (
+        target + 360 * Math.round((current - target) / 360)
+      );
+
+      const parseRotation = (transform) => {
+        if (!transform || transform === 'none') return NaN;
+        const rotation = transform.match(/^rotate\((-?[\d.]+)deg\)$/);
+        if (rotation) return Number(rotation[1]);
+        const matrix = transform.match(/^matrix\(([^)]+)\)$/);
+        if (!matrix) return NaN;
+        const values = matrix[1].split(',').map(Number);
+        if (values.length < 2 || values.some((value) => !Number.isFinite(value))) return NaN;
+        return Math.atan2(values[1], values[0]) * 180 / Math.PI;
+      };
+
+      const readNeedleAngle = (needle) => {
+        const reference = Number(needle.dataset.angle) || 0;
+        const visible = parseRotation(window.getComputedStyle(needle).transform);
+        return Number.isFinite(visible)
+          ? nearestEquivalentAngle(visible, reference)
+          : reference;
+      };
+
+      const setNeedleAngle = (needle, angle) => {
+        needle.style.transform = `rotate(${angle}deg)`;
+        needle.dataset.angle = String(angle);
+      };
+
+      const stopKnobAnimations = () => {
+        const currentAngles = knobNeedles.map(readNeedleAngle);
+        knobSequence += 1;
+        knobAnimations.forEach((animation) => animation.cancel());
+        knobAnimations = [];
+        return currentAngles;
+      };
+
+      const animateKnobs = (index, { immediate = false, directSelection = false } = {}) => {
+        if (knobNeedles.length !== 3) return;
+        let currentAngles = stopKnobAnimations();
+        const selectedAngles = knobAngles[index].map((target, needleIndex) => (
+          immediate
+            ? target
+            : nearestEquivalentAngle(target, currentAngles[needleIndex])
+        ));
+
+        if (reducedMotion.matches) {
+          knobNeedles.forEach((needle, needleIndex) => {
+            setNeedleAngle(needle, knobAngles[index][needleIndex]);
+          });
+          return;
+        }
+
+        if (immediate) {
+          knobNeedles.forEach((needle, needleIndex) => {
+            setNeedleAngle(needle, selectedAngles[needleIndex]);
+          });
+          currentAngles = [...selectedAngles];
+        }
+
+        const nextIndex = (index + 1) % knobAngles.length;
+        const nextAngles = knobAngles[nextIndex].map((target, needleIndex) => (
+          nearestEquivalentAngle(target, selectedAngles[needleIndex])
+        ));
+        const sequence = knobSequence;
+
+        knobAnimations = knobNeedles.map((needle, needleIndex) => {
+          const keyframes = directSelection
+            ? [
+                { transform: `rotate(${currentAngles[needleIndex]}deg)`, offset: 0, easing: knobEasing },
+                { transform: `rotate(${selectedAngles[needleIndex]}deg)`, offset: knobCatchupOffset, easing: knobEasing },
+                { transform: `rotate(${nextAngles[needleIndex]}deg)`, offset: 1 }
+              ]
+            : [
+                { transform: `rotate(${currentAngles[needleIndex]}deg)`, offset: 0, easing: knobEasing },
+                { transform: `rotate(${nextAngles[needleIndex]}deg)`, offset: 1 }
+              ];
+          needle.dataset.angle = String(nextAngles[needleIndex]);
+          return needle.animate(keyframes, { duration: moduleFillMs, fill: 'forwards' });
+        });
+
+        Promise.all(knobAnimations.map((animation) => animation.finished))
+          .then(() => {
+            if (sequence !== knobSequence) return;
+            knobNeedles.forEach((needle, needleIndex) => {
+              setNeedleAngle(needle, nextAngles[needleIndex]);
+            });
+            knobAnimations.forEach((animation) => animation.cancel());
+            knobAnimations = [];
+          })
+          .catch(() => {});
+      };
+
+      const setContent = (index) => {
+        content.style.setProperty('--content-width', services[index][2]);
+        content.src = services[index][1];
+        content.alt = `${services[index][0]} service details`;
+      };
+
+      const clearGlitch = () => {
+        window.clearTimeout(contentSwapTimer);
+        window.clearTimeout(glitchCleanupTimer);
+        screen.classList.remove('is-switching');
+        content.classList.remove('is-changing');
+      };
+
+      const setActive = (index, { immediate = false, directSelection = false } = {}) => {
+        const serviceChanged = index !== activeServiceIndex;
+        clearGlitch();
+        window.clearTimeout(beaconHandoffTimer);
+        board.classList.remove('is-beacon-on');
+        activeServiceIndex = index;
+        modules.forEach((module, moduleIndex) => {
+          module.classList.remove('is-active');
+          module.setAttribute('aria-pressed', String(moduleIndex === index));
+        });
+
+        const selectedModule = modules[index];
+        void selectedModule.offsetWidth;
+        selectedModule.classList.add('is-active');
+        board.classList.add('is-beacon-on');
+        animateKnobs(index, { immediate, directSelection: directSelection && serviceChanged });
+
+        if (immediate || reducedMotion.matches || !serviceChanged) {
+          setContent(index);
+          return;
+        }
+
+        void screen.offsetWidth;
+        screen.classList.add('is-switching');
+        content.classList.add('is-changing');
+        contentSwapTimer = window.setTimeout(() => setContent(index), serviceContentSwapMs);
+        glitchCleanupTimer = window.setTimeout(clearGlitch, serviceGlitchDurationMs);
+      };
+
+      modules.forEach((module, index) => {
+        module.addEventListener('click', () => setActive(index, { directSelection: true }));
+        const activeLayer = module.querySelector('.service-module__on');
+        activeLayer?.addEventListener('animationend', (event) => {
+          if (event.animationName !== 'service-module-led-wipe' || index !== activeServiceIndex || reducedMotion.matches) return;
+          board.classList.remove('is-beacon-on');
+          beaconHandoffTimer = window.setTimeout(() => setActive((activeServiceIndex + 1) % services.length), beaconHandoffMs);
+        });
+      });
+
+      setActive(0, { immediate: true });
+    }
+
     initPageScrollProgress();
     initWorkCardScaleMotion();
+    initSectionHeadingHandoff();
     initZacksWorkCardMotion();
     initWorkCardThumbnailMotion();
+    initServiceSwitchboard();
   </script>
 </body>
 </html>
