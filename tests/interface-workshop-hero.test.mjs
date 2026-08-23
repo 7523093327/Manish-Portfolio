@@ -27,7 +27,8 @@ assert.match(zacksCaseStudy, /<section class="case-export-section case-export-se
 assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--product-work" aria-label="Product flows">/, 'adds the exact Product Work export');
 assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--confidential-work" aria-label="Confidential product work">/, 'adds the exact Confidential Work export');
 assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--thanks" aria-label="Closing thanks">/, 'adds the exact closing Thanks export');
-assert.equal((zacksCaseStudy.match(/class="case-export-section__layer /g) || []).length, 10, 'keeps the existing layered sections and reveals each new exact export once');
+assert.equal((zacksCaseStudy.match(/class="case-export-section__layer /g) || []).length, 7, 'keeps layered reveals only for the two composite design-system sections');
+assert.equal((zacksCaseStudy.match(/class="case-export-section__static"/g) || []).length, 3, 'renders each late exact export once instead of compositing duplicate SVG copies');
 const tokenSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--tokens"');
 const productWorkSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--product-work"');
 const confidentialWorkSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--confidential-work"');
@@ -41,7 +42,9 @@ assert.ok(
 assert.match(zacksCaseStudy, /\.case-export-section--product-work \.case-export-section__canvas\{aspect-ratio:1920\/1001\}/, 'preserves the Product Work export ratio');
 assert.match(zacksCaseStudy, /\.case-export-section--confidential-work \.case-export-section__canvas\{aspect-ratio:1920\/934\}/, 'preserves the Confidential Work export ratio');
 assert.match(zacksCaseStudy, /\.case-export-section--thanks \.case-export-section__canvas\{aspect-ratio:1930\/343\}/, 'preserves the Thanks export ratio');
-assert.match(zacksCaseStudy, /\.case-export-section--exact \.case-export-section__layer\{inset:0;width:100%;height:100%\}/, 'does not crop the new borderless exports');
+assert.match(zacksCaseStudy, /\.case-export-section__static\{display:block;width:100%;height:auto;opacity:1;transform:none\}/, 'keeps late exact exports visible even when JavaScript or IntersectionObserver is unavailable');
+assert.match(zacksCaseStudy, /\.case-export-section\.is-visible \.case-export-section__static\{animation:case-export-section-settle \.7s cubic-bezier\(\.2,0,0,1\) both\}/, 'adds a safe entrance effect without using hidden initial CSS state');
+assert.match(zacksCaseStudy, /@keyframes case-export-section-settle\{from\{transform:translateY\(12px\);filter:brightness\(\.96\)\}to\{transform:none;filter:none\}\}/, 'uses a restrained non-blocking settle animation for exact exports');
 assert.equal(createHash('sha256').update(zacksProductWorkSvg).digest('hex'), '9cb6e983fe634017e876e15acb8c13746051a16b7f67e721a8f9216a8bd8c56c', 'copies the exact Product Work SVG without the Yes/No flow labels');
 assert.equal(createHash('sha256').update(zacksConfidentialWorkSvg).digest('hex'), 'c0a1837ae0eea830eda8393ffbc07d233da8a13d09322899d40c91b2fab1b263', 'copies the exact Confidential Work SVG');
 assert.equal(createHash('sha256').update(zacksThanksSvg).digest('hex'), 'ffa2e8731b8fedb0f23021d7078cc3f13f6d3c45ec366b17ec1270c717579d65', 'copies the exact Thanks SVG');
