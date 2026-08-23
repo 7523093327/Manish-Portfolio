@@ -1,0 +1,17 @@
+.codex-vercel-cache/
+.vercel-local-data/
+.npm-cache/
+.tmp-*/
+docs/superpowers/
+vercel.json.txt
+/index.html
+
+# Local design sources and references that are not used by the public pages.
+About me section/about-content.svg
+About me section/about-section-master.svg
+About me section/about-section.png
+About me section/about-tools-strip.svg
+About me section/illustrated photo.png
+About me section/Real photo.png
+About me section/Tools.svg
+Zacks case study/

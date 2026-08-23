@@ -1,10 +1,70 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../outputs/interface-workshop-hero.html', import.meta.url), 'utf8');
 const featuredWorkHeaderSvg = readFileSync(new URL('../featured-work-header-1.svg', import.meta.url), 'utf8');
-const zacksCaseStudy = readFileSync(new URL('../work/zacks-insights.html', import.meta.url), 'utf8');
+const zacksCaseStudy = readFileSync(new URL('../work/zacks/index.html', import.meta.url), 'utf8');
+const zacksResearchSectionSvg = readFileSync(new URL('../work/zacks/section-05-research-visual-direction.svg', import.meta.url), 'utf8');
+const zacksProductWorkSvg = readFileSync(new URL('../work/zacks/section-08-product-work.svg', import.meta.url));
+const zacksConfidentialWorkSvg = readFileSync(new URL('../work/zacks/section-09-confidential-work.svg', import.meta.url));
+const zacksThanksSvg = readFileSync(new URL('../work/zacks/thanks.svg', import.meta.url));
+const vercelConfig = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
 const renderedText = html.replace(/<[^>]+>/g, ' ');
+
+assert.match(zacksCaseStudy, /<title>Zacks Insight · Case Study<\/title>/, 'adds the Zacks case-study document');
+assert.match(zacksCaseStudy, /src="zacks-hero-section\.svg"/, 'uses a case-study hero asset bundled beside the page');
+assert.match(zacksCaseStudy, /url\('Icons\/UsersRound\.svg'\)/, 'keeps case-study icon paths relative to its published directory');
+assert.doesNotMatch(zacksCaseStudy, /<header class="zacks-header">/, 'removes the separate Zacks case-study header bar');
+assert.doesNotMatch(zacksCaseStudy, /zacks-back-button/, 'does not add a Back control to the case-study hero');
+assert.match(zacksCaseStudy, /\.zacks-hero\{width:100%;min-height:100vh;padding:0;display:block\}/, 'keeps the hero artwork full width without side padding');
+assert.match(zacksCaseStudy, /\.case-section>\.zacks-container\{width:100%;max-width:var\(--zacks-content-width\);padding-inline:clamp\(20px,5vw,76px\);margin-inline:auto\}/, 'adds explicit responsive left and right padding to every text-content section');
+assert.match(zacksCaseStudy, /\.flow::before\{content:"";position:absolute;top:40px;left:12px;right:12px;height:1px;background:var\(--forest-800\);opacity:\.7\}/, 'draws one continuous desktop transformation connector instead of separated segments');
+assert.match(zacksCaseStudy, /@media\(min-width:901px\)\{\.flow-step::after\{display:none\}\}/, 'removes the broken per-step connector segments on desktop');
+assert.match(zacksCaseStudy, /@media\(max-width:900px\)\{\.flow::before\{display:none\}\.flow-step::after\{left:6px;width:1px;height:calc\(100% - 20px\)\}\}/, 'keeps the mobile transformation connector one CSS pixel wide');
+assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--research" aria-label="Design system research and visual direction">/, 'adds the exact exported Figma Section 05 asset after the design challenge');
+assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--tokens" aria-label="Token architecture">/, 'adds the latest exported Figma Section 06 asset');
+assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--product-work" aria-label="Product flows">/, 'adds the exact Product Work export');
+assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--confidential-work" aria-label="Confidential product work">/, 'adds the exact Confidential Work export');
+assert.match(zacksCaseStudy, /<section class="case-export-section case-export-section--thanks" aria-label="Closing thanks">/, 'adds the exact closing Thanks export');
+assert.equal((zacksCaseStudy.match(/class="case-export-section__layer /g) || []).length, 10, 'keeps the existing layered sections and reveals each new exact export once');
+const tokenSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--tokens"');
+const productWorkSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--product-work"');
+const confidentialWorkSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--confidential-work"');
+const thanksSectionPosition = zacksCaseStudy.indexOf('<section class="case-export-section case-export-section--thanks"');
+assert.ok(
+  tokenSectionPosition < productWorkSectionPosition &&
+  productWorkSectionPosition < confidentialWorkSectionPosition &&
+  confidentialWorkSectionPosition < thanksSectionPosition,
+  'renders Token Architecture, Product Work, Confidential Work, and Thanks in the approved order',
+);
+assert.match(zacksCaseStudy, /\.case-export-section--product-work \.case-export-section__canvas\{aspect-ratio:1920\/1001\}/, 'preserves the Product Work export ratio');
+assert.match(zacksCaseStudy, /\.case-export-section--confidential-work \.case-export-section__canvas\{aspect-ratio:1920\/934\}/, 'preserves the Confidential Work export ratio');
+assert.match(zacksCaseStudy, /\.case-export-section--thanks \.case-export-section__canvas\{aspect-ratio:1930\/343\}/, 'preserves the Thanks export ratio');
+assert.match(zacksCaseStudy, /\.case-export-section--exact \.case-export-section__layer\{inset:0;width:100%;height:100%\}/, 'does not crop the new borderless exports');
+assert.equal(createHash('sha256').update(zacksProductWorkSvg).digest('hex'), '9cb6e983fe634017e876e15acb8c13746051a16b7f67e721a8f9216a8bd8c56c', 'copies the exact Product Work SVG without the Yes/No flow labels');
+assert.equal(createHash('sha256').update(zacksConfidentialWorkSvg).digest('hex'), 'c0a1837ae0eea830eda8393ffbc07d233da8a13d09322899d40c91b2fab1b263', 'copies the exact Confidential Work SVG');
+assert.equal(createHash('sha256').update(zacksThanksSvg).digest('hex'), 'ffa2e8731b8fedb0f23021d7078cc3f13f6d3c45ec366b17ec1270c717579d65', 'copies the exact Thanks SVG');
+assert.match(zacksCaseStudy, /case-export-section__layer--research-intro/, 'reveals the research introduction separately');
+assert.match(zacksCaseStudy, /case-export-section__layer--research-references/, 'reveals market references as the second research layer');
+assert.match(zacksCaseStudy, /case-export-section__layer--research-direction/, 'reveals visual direction as the final research layer');
+assert.match(zacksCaseStudy, /case-export-section__layer--token-heading/, 'reveals the token heading first');
+assert.match(zacksCaseStudy, /case-export-section__layer--token-stages/, 'reveals the token stages next');
+assert.match(zacksCaseStudy, /case-export-section__layer--token-foundations/, 'reveals the lower token foundations separately');
+assert.match(zacksCaseStudy, /case-export-section__layer--token-components/, 'reveals the lower component examples last');
+assert.match(zacksCaseStudy, /\.case-export-section__layer\{[^}]*opacity:0[^}]*translateY\(16px\)[^}]*cubic-bezier\(\.2,0,0,1\)/, 'uses a restrained staged rise and fade for exported artwork layers');
+assert.match(zacksCaseStudy, /\.case-export-section\.is-visible \.case-export-section__layer\{opacity:1;transform:none\}/, 'plays the layer build when the section enters the viewport');
+assert.match(zacksCaseStudy, /document\.querySelectorAll\('\.reveal,\.case-export-section'\)/, 'observes exported sections with the existing scroll-reveal system');
+assert.match(zacksCaseStudy, /@media\(prefers-reduced-motion:reduce\)\{\.case-export-section__layer\{opacity:1;transform:none;transition:none\}\}/, 'shows the complete supplied artwork without animation for reduced motion');
+assert.match(zacksCaseStudy, /\.case-section,\.case-section--tint,\.case-export-section,\.zacks-footer\{background:#f9f7f3\}/, 'uses one continuous background color after the hero');
+assert.match(zacksCaseStudy, /\.zacks-footer\{border-top:0\}/, 'removes the final divider between the last case-study section and footer');
+assert.doesNotMatch(zacksResearchSectionSvg, /<rect x="0\.5" y="0\.5" width="1919" height="933" stroke="black"\/>/, 'does not render the research export frame above Token Architecture');
+assert.match(zacksCaseStudy, /\.case-export-section__layer\{position:absolute;inset:-1px;[^}]*width:calc\(100% \+ 2px\);height:calc\(100% \+ 2px\)/, 'crops the SVG exports’ black outer frame outside each section canvas');
+assert.match(zacksCaseStudy, /\.zacks-hero\{[^}]*background:var\(--cream-50\)/, 'keeps the hero background unchanged');
+assert.match(html, /href="\/work\/zacks"/, 'links the Zacks card to the published case-study route');
+assert.match(vercelConfig, /"cleanUrls"\s*:\s*true/, 'enables clean case-study URLs');
+assert.match(vercelConfig, /"source"\s*:\s*"\/"/, 'keeps the portfolio root rewrite');
+assert.match(vercelConfig, /"destination"\s*:\s*"\/outputs\/interface-workshop-hero"/, 'keeps the homepage as the root destination');
 
 assert.match(html, /<nav[\s>]/, 'provides semantic navigation');
 assert.doesNotMatch(html, /<a href="#tools">Skills<\/a>/, 'keeps Skills out of the primary navigation');
@@ -46,11 +106,23 @@ assert.match(html, /mask-image:linear-gradient\(to bottom,#000 0,#000 calc\(100%
 assert.match(html, /featured-work-header\{position:sticky/, 'keeps the featured-work heading sticky on desktop');
 assert.match(html, /\.work-card\{position:relative;display:block;width:min\(74\.8vw,1275px\)/, 'scales desktop cards to 85 percent while keeping them centered');
 assert.match(html, /\.work-card__artwork\{position:relative;display:block;width:100%;aspect-ratio:1920\/880;overflow:hidden\}/, 'crops the exported full-frame SVG to the card artwork');
-assert.match(html, /\.work-card__cta-overlay\{[^}]*left:21%[^}]*top:77\.5%[^}]*pointer-events:none/, 'positions the CTA enhancement over the authored CTA after the SVG export whitespace');
-assert.match(html, /\.work-card__cta-overlay\{[^}]*border:2px solid transparent[^}]*opacity:0/, 'keeps the CTA enhancement invisible before hover');
-assert.match(html, /\.work-card:hover \.work-card__cta-overlay\{border-color:var\(--blue\);opacity:1\}/, 'reveals a blue brand outline only while hovering the card');
-assert.match(html, /\.work-card:hover \.work-card__cta-overlay::after\{transform:translateY\(-50%\) rotate\(45deg\)\}/, 'rotates the CTA arrow from 45 degrees to 90 degrees on hover');
-assert.doesNotMatch(html, /\.work-card__cta-overlay::before/, 'removes the misplaced blue underline treatment');
+assert.equal((html.match(/class="case-study-cta"/g) || []).length, 4, 'renders one reusable CTA for each Featured Work card');
+assert.equal((html.match(/class="work-card__mobile-summary"/g) || []).length, 4, 'adds one readable mobile summary per Featured Work card');
+assert.equal((html.match(/class="case-study-cta__arrow"/g) || []).length, 4, 'renders exactly one arrow per CTA');
+assert.match(html, /\.work-card\{--case-study-cta-top:76%/, 'places every CTA on the same card-relative baseline');
+assert.match(html, /\.work-card__artwork::after\{[^}]*top:calc\(var\(--baked-case-study-cta-top\) - 1\.5%\)[^}]*background:#FBF6EE/, 'masks each asset-exported CTA at its own original position');
+assert.match(html, /\.case-study-cta\{[^}]*pointer-events:none[^}]*color:var\(--ink\)/, 'uses the real card link while preserving a consistently styled CTA');
+assert.match(html, /\.case-study-cta::before\{[^}]*background:#FBF6EE/, 'matches the exported card paper without a visible CTA pill');
+assert.match(html, /\.case-study-cta::after\{[^}]*background:var\(--blue\)[^}]*transform:scaleX\(0\)[^}]*transform-origin:left center/, 'keeps the blue underline hidden at rest and ready to grow from the left');
+assert.match(html, /\.case-study-cta::after\{[^}]*bottom:-4px/, 'keeps the animated underline four pixels below the CTA text');
+assert.match(html, /\.case-study-cta::after\{[^}]*height:1px/, 'uses a fine one-pixel CTA underline');
+assert.match(html, /\.work-card:hover \.case-study-cta::after,\.work-card:focus-visible \.case-study-cta::after\{transform:scaleX\(1\)\}/, 'shows the same underline on hover and keyboard focus');
+assert.match(html, /\.case-study-cta__arrow\{[^}]*fill:none[^}]*stroke:currentColor[^}]*transform:rotate\(0deg\)[^}]*transform-origin:center center/, 'uses one stroke-only diagonal arrow with a stable transform origin');
+assert.match(html, /\.work-card:hover \.case-study-cta__arrow,\.work-card:focus-visible \.case-study-cta__arrow\{transform:rotate\(45deg\)\}/, 'rotates the same arrow to the right on hover and focus');
+assert.match(html, /\.work-card:hover \.case-study-cta,\.work-card:focus-visible \.case-study-cta\{color:var\(--blue\)\}/, 'turns the CTA label and its stroke-only arrow blue together');
+assert.doesNotMatch(html, /<span class="work-card__cta-overlay"/, 'removes the prior overlapping CTA overlay elements');
+assert.match(html, /@media\(max-width:700px\)\{[^}]*\.work-card__mobile-summary\{display:block/, 'shows readable project summaries on small screens');
+assert.match(html, /\.case-study-cta::before\{display:none\}/, 'removes the obsolete CTA paper fill that overlaps thumbnail artwork');
 assert.match(html, /transform:translateY\(-12\.96%\)/, 'hides the duplicate SVG heading above the card artwork');
 assert.match(html, /Featured work sections\/work-card-01-zacks\.svg/, 'uses the Zacks exported work card');
 assert.match(html, /Featured work sections\/work-card-02-peoplehum\.svg/, 'uses the peopleHum exported work card');
@@ -110,7 +182,7 @@ assert.match(html, /start:\s*'top 85%'/, 'starts the Zacks build as it enters th
 assert.match(html, /end:\s*'center center'/, 'finishes the Zacks build near the viewport center');
 assert.match(html, /scrub:\s*\.8/, 'scrubs the Zacks build smoothly with scrolling');
 assert.match(html, /max-width:\s*700px/, 'uses a static Zacks card on small screens');
-assert.match(html, /href="\/work\/zacks-insights\.html"/, 'links the Zacks card to its case study shell');
+assert.match(html, /href="\/work\/zacks"/, 'links the Zacks card to its published case-study route');
 assert.match(html, /href="https:\/\/manishgaudportfolio\.framer\.ai\/peoplehum" target="_blank" rel="noopener noreferrer"/, 'links the peopleHum card to the supplied external case study');
 assert.match(html, /href="https:\/\/manishgaudportfolio\.framer\.ai\/try-cosoot" target="_blank" rel="noopener noreferrer"/, 'links the Cosoot card to the supplied external case study');
 assert.match(html, /href="https:\/\/manishgaudportfolio\.framer\.ai\/zenskar-internship" target="_blank" rel="noopener noreferrer"/, 'links the Zenskar card to the supplied external case study');
@@ -226,6 +298,8 @@ assert.match(html, /href="https:\/\/www\.linkedin\.com\/in\/manishgaudln" target
 assert.match(html, /\.about-section__inner\{grid-template-columns:1fr/, 'stacks the About layout on mobile');
 assert.match(html, /@media\(prefers-reduced-motion:reduce\)\{\.about-section/, 'defines an About reduced-motion fallback');
 assert.match(html, /<section class="testimonials-section" id="testimonials" aria-labelledby="testimonials-title">/, 'adds a semantic Testimonials section after About');
+assert.match(html, /\.testimonials-heading img,\.contact-heading img\{[^}]*animation:section-heading-icon-spin 8s linear infinite/, 'rotates the Testimonials and Contact heading icons consistently');
+assert.match(html, /@keyframes section-heading-icon-spin\{to\{transform:rotate\(360deg\)\}\}/, 'uses one shared continuous header-icon rotation');
 assert.match(renderedText, /What people say about working with me\./, 'includes the Testimonials subheading');
 assert.doesNotMatch(renderedText, /I value collaboration, clarity, and impact\./, 'removes the Testimonials introduction at the user’s request');
 assert.match(html, /\.testimonials-subheading\{[^}]*"Manrope",sans-serif/, 'sets the Testimonials subheading in Manrope');
@@ -249,6 +323,10 @@ assert.match(renderedText, /More on request/, 'adds the requested closing note a
 assert.match(html, /\.testimonial-card:hover\{[^}]*translateY\(-4px\)/, 'lifts testimonial notes subtly on hover');
 assert.match(html, /\.testimonials-grid\{grid-template-columns:1fr/, 'stacks testimonial cards on mobile');
 assert.match(html, /<section class="contact-section" id="contact" aria-labelledby="contact-title">/, 'adds a semantic Contact section');
+assert.match(html, /<div class="contact-heading"><img[^>]*><h2 id="contact-title">Contact<\/h2><\/div>/, 'uses a real Contact section heading beside the icon');
+assert.match(html, /\.contact-heading h2\{[^}]*Fraunces,serif/, 'matches Contact heading typography to the other section headings');
+assert.match(html, /\.contact-copy \.contact-title\{[^}]*clamp\(26px,2\.4vw,38px\)[^}]*"Manrope",sans-serif/, 'uses a smaller Manrope contact pitch below the section heading');
+assert.match(html, /\.contact-copy \.contact-availability\{[^}]*font-weight:400/, 'keeps the availability sentence at the regular body-copy weight');
 assert.match(renderedText, /Let’s shape your next product experience\./, 'includes the supplied Contact heading');
 assert.match(renderedText, /Open to freelance projects, contract roles, and selected full-time product design opportunities\./, 'includes the availability note');
 assert.match(html, /href="mailto:manish\.d\.gaud@gmail\.com"/, 'links the email card to the supplied email address');
@@ -266,24 +344,5 @@ assert.doesNotMatch(renderedText, /Available for selected projects/, 'removes th
 assert.match(html, /\.contact-card:hover\{[^}]*translateY\(-4px\)/, 'lifts contact cards subtly on hover');
 assert.match(html, /\.contact-cards\{grid-template-columns:1fr/, 'stacks contact cards on mobile');
 assert.doesNotMatch(html, /<form\b|<input\b|<textarea\b/, 'does not add a contact form or fake form controls');
-assert.match(zacksCaseStudy, /<main id="case-study">/, 'provides the Zacks case-study main container');
-assert.match(zacksCaseStudy, /--forest-950:\s*#002E25/, 'defines the Zacks forest token');
-assert.match(zacksCaseStudy, /--cream-50:\s*#FBF9F4/, 'defines the Zacks cream token');
-assert.match(zacksCaseStudy, /--green-500:\s*#37A36B/, 'defines the Zacks accent token');
-assert.match(zacksCaseStudy, /class="zacks-container"/, 'provides the shared container primitive');
-assert.match(zacksCaseStudy, /\.zacks-eyebrow\{/, 'provides the shared eyebrow primitive');
-assert.match(zacksCaseStudy, /\.zacks-section-heading\{/, 'provides the shared section heading primitive');
-assert.match(zacksCaseStudy, /\.zacks-body\{/, 'provides the shared body text primitive');
-assert.match(zacksCaseStudy, /\.zacks-tag\{/, 'provides the shared tag primitive');
-assert.match(zacksCaseStudy, /\.zacks-divider\{/, 'provides the shared divider primitive');
-assert.match(zacksCaseStudy, /\.zacks-visual-frame\{/, 'provides the shared visual frame primitive');
-assert.match(zacksCaseStudy, /--zacks-content-width:1200px/, 'caps the editorial content width');
-assert.match(zacksCaseStudy, /@media\(max-width:700px\)/, 'defines a mobile layout breakpoint');
-assert.match(zacksCaseStudy, /@media\(prefers-reduced-motion:reduce\)/, 'respects reduced motion on the case-study shell');
-assert.doesNotMatch(zacksCaseStudy, /Hero|Problem|Impact|Metrics|Case study section/, 'does not invent future case-study content');
-assert.match(zacksCaseStudy, /<section class="zacks-hero" id="hero" aria-labelledby="zacks-hero-title">/, 'adds only the requested Zacks hero section');
-assert.match(zacksCaseStudy, /zacks-hero-section\.svg/, 'uses the supplied Zacks case-study hero artwork');
-assert.match(zacksCaseStudy, /\.zacks-hero-title\{[^}]*font-size:clamp\(40px,5\.2vw,76px\)/, 'uses the requested responsive editorial headline scale');
-assert.match(html, /href="\/work\/zacks-insights\.html"/, 'routes the Zacks card to the new case-study shell');
 
 console.log('Interface Workshop hero acceptance checks passed.');
