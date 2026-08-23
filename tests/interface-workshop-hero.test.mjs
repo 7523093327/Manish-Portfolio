@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 const html = readFileSync(new URL('../outputs/interface-workshop-hero.html', import.meta.url), 'utf8');
 const featuredWorkHeaderSvg = readFileSync(new URL('../featured-work-header-1.svg', import.meta.url), 'utf8');
 const zacksCaseStudy = readFileSync(new URL('../work/zacks/index.html', import.meta.url), 'utf8');
+const zacksHeroSvg = readFileSync(new URL('../work/zacks/zacks-hero-section.svg', import.meta.url), 'utf8');
 const zacksResearchSectionSvg = readFileSync(new URL('../work/zacks/section-05-research-visual-direction.svg', import.meta.url), 'utf8');
 const zacksProductWorkSvg = readFileSync(new URL('../work/zacks/section-08-product-work.svg', import.meta.url));
 const zacksConfidentialWorkSvg = readFileSync(new URL('../work/zacks/section-09-confidential-work.svg', import.meta.url));
@@ -13,11 +14,29 @@ const vercelConfig = readFileSync(new URL('../vercel.json', import.meta.url), 'u
 const renderedText = html.replace(/<[^>]+>/g, ' ');
 
 assert.match(zacksCaseStudy, /<title>Zacks Insight · Case Study<\/title>/, 'adds the Zacks case-study document');
+const zacksBaseHref = zacksCaseStudy.match(/<base href="([^"]+)">/)?.[1];
+const zacksSlashlessDocumentUrl = new URL('https://portfolio.example/work/zacks');
+const zacksEffectiveBaseUrl = zacksBaseHref
+  ? new URL(zacksBaseHref, zacksSlashlessDocumentUrl)
+  : zacksSlashlessDocumentUrl;
+for (const assetName of [
+  'section-05-research-visual-direction.svg',
+  'section-06-token-architecture.svg',
+  'section-08-product-work.svg',
+  'section-09-confidential-work.svg',
+  'thanks.svg',
+]) {
+  assert.equal(
+    new URL(assetName, zacksEffectiveBaseUrl).pathname,
+    `/work/zacks/${assetName}`,
+    `resolves ${assetName} inside the Zacks directory from the slashless public route`,
+  );
+}
 assert.match(zacksCaseStudy, /src="zacks-hero-section\.svg"/, 'uses a case-study hero asset bundled beside the page');
 assert.match(zacksCaseStudy, /url\('Icons\/UsersRound\.svg'\)/, 'keeps case-study icon paths relative to its published directory');
 assert.doesNotMatch(zacksCaseStudy, /<header class="zacks-header">/, 'removes the separate Zacks case-study header bar');
 assert.doesNotMatch(zacksCaseStudy, /zacks-back-button/, 'does not add a Back control to the case-study hero');
-assert.match(zacksCaseStudy, /\.zacks-hero\{width:100%;min-height:100vh;padding:0;display:block\}/, 'keeps the hero artwork full width without side padding');
+assert.match(zacksCaseStudy, /\.zacks-hero\{width:100%;min-height:100vh;padding:0;display:block;[^}]*\}/, 'keeps the hero artwork full width without side padding');
 assert.match(zacksCaseStudy, /\.case-section>\.zacks-container\{width:100%;max-width:var\(--zacks-content-width\);padding-inline:clamp\(20px,5vw,76px\);margin-inline:auto\}/, 'adds explicit responsive left and right padding to every text-content section');
 assert.match(zacksCaseStudy, /\.flow::before\{content:"";position:absolute;top:40px;left:12px;right:12px;height:1px;background:var\(--forest-800\);opacity:\.7\}/, 'draws one continuous desktop transformation connector instead of separated segments');
 assert.match(zacksCaseStudy, /@media\(min-width:901px\)\{\.flow-step::after\{display:none\}\}/, 'removes the broken per-step connector segments on desktop');
@@ -63,7 +82,16 @@ assert.match(zacksCaseStudy, /\.case-section,\.case-section--tint,\.case-export-
 assert.match(zacksCaseStudy, /\.zacks-footer\{border-top:0\}/, 'removes the final divider between the last case-study section and footer');
 assert.doesNotMatch(zacksResearchSectionSvg, /<rect x="0\.5" y="0\.5" width="1919" height="933" stroke="black"\/>/, 'does not render the research export frame above Token Architecture');
 assert.match(zacksCaseStudy, /\.case-export-section__layer\{position:absolute;inset:-1px;[^}]*width:calc\(100% \+ 2px\);height:calc\(100% \+ 2px\)/, 'crops the SVG exports’ black outer frame outside each section canvas');
-assert.match(zacksCaseStudy, /\.zacks-hero\{[^}]*background:var\(--cream-50\)/, 'keeps the hero background unchanged');
+assert.match(
+  zacksCaseStudy,
+  /\.zacks-hero\{width:100%;min-height:100vh;padding:0;display:block;background:#0A3426\}/,
+  'keeps the hero canvas green behind the rounded artwork at every viewport width',
+);
+assert.doesNotMatch(
+  zacksHeroSvg,
+  /<rect x="5" y="5" width="1910" height="1070" rx="30" stroke="#F9F7F3" stroke-width="10"\/>/,
+  'does not draw cream bands around the green hero artwork',
+);
 assert.match(html, /href="\/work\/zacks"/, 'links the Zacks card to the published case-study route');
 assert.match(vercelConfig, /"cleanUrls"\s*:\s*true/, 'enables clean case-study URLs');
 assert.match(vercelConfig, /"source"\s*:\s*"\/"/, 'keeps the portfolio root rewrite');
