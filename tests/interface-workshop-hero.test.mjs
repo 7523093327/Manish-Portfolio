@@ -14,6 +14,51 @@ const zacksThanksSvg = readFileSync(new URL('../work/zacks/thanks.svg', import.m
 const vercelConfig = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
 const renderedText = html.replace(/<[^>]+>/g, ' ');
 
+const serviceScreenConfigSource = html.match(
+  /function initServiceSwitchboard\(\)[\s\S]*?const services = (\[[\s\S]*?\n\s*\]);/,
+)?.[1];
+assert.ok(serviceScreenConfigSource, 'exposes the service-screen content configuration');
+const serviceScreenConfigs = runInNewContext(`(${serviceScreenConfigSource})`);
+const serviceScreenWidth = 689;
+const centeredServiceAssets = [
+  ['Product Design', 'Product design.svg'],
+  ['UX Research', 'UX Design.svg'],
+  ['UI Design', 'UI Design.svg'],
+  ['Design Systems', 'Design Systems.svg'],
+  ['Website Design', 'Website Design.svg'],
+  ['Visual Design', 'Visual Design.svg'],
+];
+
+for (const [serviceName, assetName] of centeredServiceAssets) {
+  const serviceConfig = serviceScreenConfigs.find(([name]) => name === serviceName);
+  assert.ok(serviceConfig, `configures the ${serviceName} screen`);
+  assert.equal(
+    serviceConfig[1],
+    `../Service animation/${assetName}`,
+    `uses the approved ${serviceName} illustration export`,
+  );
+
+  const svg = readFileSync(new URL(`../Service animation/${assetName}`, import.meta.url), 'utf8');
+  const viewBox = svg.match(/<svg\b[^>]*\bviewBox="([^"]+)"/)?.[1].split(/\s+/).map(Number);
+  assert.equal(viewBox?.length, 4, `${serviceName} provides a measurable SVG viewBox`);
+  const authoredWidth = viewBox[2];
+  const renderedWidth = serviceScreenWidth * (Number.parseFloat(serviceConfig[2]) / 100);
+  assert.ok(
+    Math.abs(renderedWidth - authoredWidth) < 0.08,
+    `${serviceName} preserves its authored width instead of stretching the centered export`,
+  );
+
+  const patternedIllustration = svg.match(/<rect\b[^>]*\bfill="url\(#pattern[^"]+\)"[^>]*\/>/)?.[0];
+  if (!patternedIllustration) continue;
+  const x = Number(patternedIllustration.match(/\bx="([^"]+)"/)?.[1]);
+  const width = Number(patternedIllustration.match(/\bwidth="([^"]+)"/)?.[1]);
+  const illustrationCenterOffset = x + width / 2 - authoredWidth / 2;
+  assert.ok(
+    Math.abs(illustrationCenterOffset) <= 16,
+    `${serviceName} keeps its main illustration centered beneath the heading`,
+  );
+}
+
 function assertVercelAnalyticsBootstrap(documentHtml, pageUrl, pageLabel) {
   const bootstrapSource = documentHtml.match(
     /<script data-vercel-analytics-bootstrap>([\s\S]*?)<\/script>/,
