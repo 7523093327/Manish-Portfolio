@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
+import { runInNewContext } from 'node:vm';
 
 const html = readFileSync(new URL('../outputs/interface-workshop-hero.html', import.meta.url), 'utf8');
 const featuredWorkHeaderSvg = readFileSync(new URL('../featured-work-header-1.svg', import.meta.url), 'utf8');
@@ -12,6 +13,33 @@ const zacksConfidentialWorkSvg = readFileSync(new URL('../work/zacks/section-09-
 const zacksThanksSvg = readFileSync(new URL('../work/zacks/thanks.svg', import.meta.url));
 const vercelConfig = readFileSync(new URL('../vercel.json', import.meta.url), 'utf8');
 const renderedText = html.replace(/<[^>]+>/g, ' ');
+
+function assertVercelAnalyticsBootstrap(documentHtml, pageUrl, pageLabel) {
+  const bootstrapSource = documentHtml.match(
+    /<script data-vercel-analytics-bootstrap>([\s\S]*?)<\/script>/,
+  )?.[1];
+  assert.ok(bootstrapSource, `${pageLabel} initializes Vercel Web Analytics`);
+
+  const context = { window: {} };
+  runInNewContext(bootstrapSource, context);
+  context.window.va('verification-event', { page: pageLabel });
+  assert.equal(context.window.vaq.length, 1, `${pageLabel} queues analytics calls before the client loads`);
+  assert.equal(context.window.vaq[0][0], 'verification-event', `${pageLabel} preserves the queued event name`);
+  assert.equal(context.window.vaq[0][1].page, pageLabel, `${pageLabel} preserves queued event data`);
+
+  const scriptSource = documentHtml.match(
+    /<script defer src="([^"]+)" data-vercel-analytics-script><\/script>/,
+  )?.[1];
+  assert.ok(scriptSource, `${pageLabel} loads the Vercel Analytics client`);
+  assert.equal(
+    new URL(scriptSource, pageUrl).pathname,
+    '/_vercel/insights/script.js',
+    `${pageLabel} resolves the analytics client through the Vercel project`,
+  );
+}
+
+assertVercelAnalyticsBootstrap(html, 'https://portfolio.example/', 'homepage');
+assertVercelAnalyticsBootstrap(zacksCaseStudy, 'https://portfolio.example/work/zacks/', 'Zacks case study');
 
 assert.match(zacksCaseStudy, /<title>Zacks Insight · Case Study<\/title>/, 'adds the Zacks case-study document');
 const zacksBaseHref = zacksCaseStudy.match(/<base href="([^"]+)">/)?.[1];
